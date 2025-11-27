@@ -1,3 +1,4 @@
 selenium
 customtkinter
 bs4
+requests

@@ -1,21 +1,37 @@
 import sys
+import os
+
 sys.dont_write_bytecode = True
 
+
+SRC_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+if SRC_PATH not in sys.path:
+    sys.path.insert(0, SRC_PATH)
+
 import customtkinter as ctk
-from Src.UI.Ui import UI
+from UI.Ui import UI
+
 
 class Main:
     def __init__(self, app):
-        app.title("Facebook scraper")
+        app.title("Facebook Scraper")
         app.geometry("1000x600")
-        app.wm_iconbitmap("Src/Images/appicon.ico")
+
+        # Icon fix (absolute path)
+        icon_path = os.path.join(SRC_PATH, "Images", "appicon.ico")
+        if os.path.exists(icon_path):
+            app.wm_iconbitmap(icon_path)
+
+        # Background
         self.bg_color = "#262C3C"
         app.configure(fg_color=self.bg_color)
 
-        mode_ui = UI(app)
+        # Load UI
+        self.window = UI(app)
 
 
 if __name__ == "__main__":
+    
     app = ctk.CTk()
     root = Main(app)
     app.mainloop()

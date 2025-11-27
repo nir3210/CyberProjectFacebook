@@ -1,0 +1,72 @@
+{
+  "gpus": [
+    { "model": "GeForce GTX 1050",           "resale_floor_nis_estimated": "300" },
+    { "model": "GeForce GTX 1050 Ti",        "resale_floor_nis_estimated": "350" },
+    { "model": "GeForce GTX 1060",           "resale_floor_nis_estimated": "400" },
+    { "model": "GeForce GTX 1070",           "resale_floor_nis_estimated": "500" },
+    { "model": "GeForce GTX 1070 Ti",        "resale_floor_nis_estimated": "600" },
+    { "model": "GeForce GTX 1080",           "resale_floor_nis_estimated": "700" },
+    { "model": "GeForce GTX 1080 Ti",        "resale_floor_nis_estimated": "900" },
+
+    { "model": "GeForce GTX 1650",           "resale_floor_nis_estimated": "400" },
+    { "model": "GeForce GTX 1650 Super",     "resale_floor_nis_estimated": "450" },
+    { "model": "GeForce GTX 1660",           "resale_floor_nis_estimated": "500" },
+    { "model": "GeForce GTX 1660 Super",     "resale_floor_nis_estimated": "600" },
+    { "model": "GeForce GTX 1660 Ti",        "resale_floor_nis_estimated": "700" },
+
+    { "model": "GeForce RTX 2060",           "resale_floor_nis_estimated": "800" },
+    { "model": "GeForce RTX 2060 Super",     "resale_floor_nis_estimated": "900" },
+    { "model": "GeForce RTX 2070",           "resale_floor_nis_estimated": "1000" },
+    { "model": "GeForce RTX 2070 Super",     "resale_floor_nis_estimated": "1100" },
+    { "model": "GeForce RTX 2080",           "resale_floor_nis_estimated": "1200" },
+    { "model": "GeForce RTX 2080 Super",     "resale_floor_nis_estimated": "1300" },
+    { "model": "GeForce RTX 2080 Ti",        "resale_floor_nis_estimated": "1400" },
+
+    { "model": "GeForce RTX 3050",           "resale_floor_nis_estimated": "900" },
+    { "model": "GeForce RTX 3060",           "resale_floor_nis_estimated": "1100" },
+    { "model": "GeForce RTX 3060 Ti",        "resale_floor_nis_estimated": "1300" },
+    { "model": "GeForce RTX 3070",           "resale_floor_nis_estimated": "1600" },
+    { "model": "GeForce RTX 3070 Ti",        "resale_floor_nis_estimated": "1800" },
+    { "model": "GeForce RTX 3080",           "resale_floor_nis_estimated": "2000" },
+    { "model": "GeForce RTX 3080 Ti",        "resale_floor_nis_estimated": "2300" },
+    { "model": "GeForce RTX 3090",           "resale_floor_nis_estimated": "2500" },
+    { "model": "GeForce RTX 3090 Ti",        "resale_floor_nis_estimated": "2800" },
+
+    { "model": "GeForce RTX 4050",           "resale_floor_nis_estimated": "1000" },
+    { "model": "GeForce RTX 4060",           "resale_floor_nis_estimated": "1200" },
+    { "model": "GeForce RTX 4060 Ti",        "resale_floor_nis_estimated": "1400" },
+    { "model": "GeForce RTX 4070",           "resale_floor_nis_estimated": "1800" },
+    { "model": "GeForce RTX 4070 Ti",        "resale_floor_nis_estimated": "2100" },
+    { "model": "GeForce RTX 4080",           "resale_floor_nis_estimated": "3000" },
+    { "model": "GeForce RTX 4090",           "resale_floor_nis_estimated": "3500" },
+
+    { "model": "Radeon RX 5500 XT",         "resale_floor_nis_estimated": "600" },
+    { "model": "Radeon RX 5600 XT",         "resale_floor_nis_estimated": "800" },
+    { "model": "Radeon RX 5700",            "resale_floor_nis_estimated": "900" },
+    { "model": "Radeon RX 5700 XT",         "resale_floor_nis_estimated": "1000" },
+
+    { "model": "Radeon RX 6600",            "resale_floor_nis_estimated": "1900" },
+    { "model": "Radeon RX 6600 XT",         "resale_floor_nis_estimated": "2200" },
+    { "model": "Radeon RX 6700 XT",         "resale_floor_nis_estimated": "2600" },
+    { "model": "Radeon RX 6800",            "resale_floor_nis_estimated": "3000" },
+    { "model": "Radeon RX 6800 XT",         "resale_floor_nis_estimated": "3500" },
+    { "model": "Radeon RX 6900 XT",         "resale_floor_nis_estimated": "4000" },
+
+    { "model": "Radeon RX 7600",            "resale_floor_nis_estimated": "1600" },
+    { "model": "Radeon RX 7600 XT",         "resale_floor_nis_estimated": "1900" },
+    { "model": "Radeon RX 7700",            "resale_floor_nis_estimated": "2300" },
+    { "model": "Radeon RX 7700 XT",         "resale_floor_nis_estimated": "2800" },
+    { "model": "Radeon RX 7800",            "resale_floor_nis_estimated": "3000" },
+    { "model": "Radeon RX 7800 XT",         "resale_floor_nis_estimated": "3500" },
+    { "model": "Radeon RX 7900 XT",         "resale_floor_nis_estimated": "3800" },
+    { "model": "Radeon RX 7900 XTX",        "resale_floor_nis_estimated": "4200" },
+
+    { "model": "GeForce RTX 5050",           "resale_floor_nis_estimated": "950" },
+    { "model": "GeForce RTX 5060",           "resale_floor_nis_estimated": "1100" },
+    { "model": "GeForce RTX 5060 Ti",        "resale_floor_nis_estimated": "1200" },
+    { "model": "GeForce RTX 5070",           "resale_floor_nis_estimated": "1450" },
+    { "model": "GeForce RTX 5070 Ti",        "resale_floor_nis_estimated": "1700" },
+    { "model": "GeForce RTX 5080",           "resale_floor_nis_estimated": "2200" },
+    { "model": "GeForce RTX 5090",           "resale_floor_nis_estimated": "2600" }
+  ]
+}
