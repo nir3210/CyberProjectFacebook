@@ -1,0 +1,3 @@
+selenium
+customtkinter
+bs4
