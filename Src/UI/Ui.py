@@ -50,12 +50,12 @@ class UI:
             self.start_stop_button.configure(text="Start")
 
     # NEW: Called by the scraper for each title + price found
-    def add_listing_to_ui(self, title, price):
+    def add_listing_to_ui(self, title, price, link):
         label = ctk.CTkLabel(
             self.my_frame,
-            text=f"{title} - {price}",
+            text=f"title: {title} | price: {price}",
             text_color="white",
-            font=("Arial", 18)
+            font=("Arial", 20)
         )
         label.pack(anchor="w", pady=5)
 

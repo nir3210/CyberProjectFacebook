@@ -17,7 +17,7 @@ class Main:
         app.title("Facebook Scraper")
         app.geometry("1000x600")
 
-        # Icon fix (absolute path)
+        
         icon_path = os.path.join(SRC_PATH, "Images", "appicon.ico")
         if os.path.exists(icon_path):
             app.wm_iconbitmap(icon_path)

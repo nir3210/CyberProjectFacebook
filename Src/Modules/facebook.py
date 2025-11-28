@@ -60,7 +60,6 @@ def scrape_facebook_marketplace(should_stop, ui_callback):
                     if price_text:
                         cleaned_price = re.sub(r'[^0-9,]', '', price_text)
                         price = cleaned_price if cleaned_price else "Free"
-
                 # TITLE
                 title_span = listing.find(
                     "span",
@@ -75,14 +74,20 @@ def scrape_facebook_marketplace(should_stop, ui_callback):
                     try:
                         translator = Translator()
                         translated = translator.translate(title, src='he', dest='en').text
+
                     except Exception as e:
                         print("Translation failed:", e)
                         translated = title  
 
                     print(f"Found listing: {translated}\n{price}")
-
-                    # Send normal strings to UI
-                    ui_callback(translated, price)
+                    # REFERER (location) - Always going to be there if there's a title and a price
+                    location_a = listing.find(
+                        "a" ,
+                        "x1i10hfl xjbqb8w x1ejq31n x18oe1m7 x1sy0etr xstzfhl x972fbf x10w94by x1qhh985 x14e42zd x9f619 x1ypdohk xt0psk2 x3ct3a4 xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz x1heor9g xkrqix3 x1sur9pj x1s688f x1lku1pv"
+                    )                
+                    referer = location_a.get("href")
+                    full_url = "https://facebook.com"+referer
+                    ui_callback(translated , price , full_url)
 
             except Exception as e:
                 print(e)
