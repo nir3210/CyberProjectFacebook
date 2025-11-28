@@ -1,7 +1,7 @@
 import json
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-
+import os
 
 
 def save_cookies():
@@ -15,5 +15,8 @@ def save_cookies():
     input("Please Press Enter After You Log in, So The program can save the cookies")
 
     cookies = driver.get_cookies()
-    with open("cookies.json", 'w') as file:
+
+    SRC_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    COOKIES_PATH = os.path.join(SRC_DIR, "Settings", "cookies.json")
+    with open(COOKIES_PATH , 'w') as file:
         json.dump(cookies,file , indent=4)
