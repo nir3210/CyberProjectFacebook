@@ -21,11 +21,19 @@ class UI:
         self.label = None
         self.items_scraped = 0
         self.items_scraped_ui = None
+        self.mode = 'fb'
 
         app.grid_columnconfigure(1, weight=1)
         app.grid_rowconfigure(0, weight=1)
 
         self.create_start_ui()
+
+    def set_fb(self):
+        self.mode = 'fb'
+
+    def set_az(self):
+        self.mode = 'az'
+
 
     def clear_listing(self):
         for lay in self.my_frame.winfo_children():
@@ -40,8 +48,11 @@ class UI:
 
     def threaded_scraper(self):
         try:
-            category = self.search_callback()
-            scrape_facebook_marketplace(self.stop_flag_callback, self.add_listing_to_ui, category)
+            if self.mode == 'fb':
+                category = self.search_callback()
+                scrape_facebook_marketplace(self.stop_flag_callback, self.add_listing_to_ui, category)
+            else:
+                print("amazon")
         except Exception as e:
             print("Scraper stopped:", e)
 
@@ -78,9 +89,9 @@ class UI:
     def add_listing_to_ui(self, title, price, link, city):
         self.label = ctk.CTkLabel(
             self.my_frame,
-            text=f"title: {title} | price: {price} | city: {city}",
+            text=f"Title: {title} | Price: {price} | City: {city}",
             text_color="white",
-            font=("Arial", 20)
+            font=("ansi", 20)
         )
         self.label.bind("<Button-1>", lambda e:self.callback(link))
         self.label.pack(anchor="w", pady=5)
@@ -122,7 +133,8 @@ class UI:
             corner_radius=100,
             font=("ansi", 25),
             width=250,
-            height=40
+            height=40,
+            command=self.set_fb
         )
         self.facebook_button.pack(pady=10, padx=10)
 
@@ -137,7 +149,8 @@ class UI:
             corner_radius=100,
             font=("ansi", 25),
             width=250,
-            height=40
+            height=40,
+            command=self.set_az
         )
         self.amazon_button.pack(pady=10, padx=10)
 
@@ -148,7 +161,7 @@ class UI:
             hover_color="#5C4BB3",
             height=40,
             width=100,
-            font=("Arial", 25),
+            font=("ansi", 25),
             corner_radius=100,
             command=exit
         )
@@ -218,7 +231,7 @@ class UI:
             width=300,
             height=200,
             fg_color='#0C1826',
-            corner_radius=10
+            corner_radius=20
         )
         self.my_frame.pack(fill='both', expand=True, padx=20, pady=20)
 
