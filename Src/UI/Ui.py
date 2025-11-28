@@ -148,6 +148,7 @@ class UI:
             height=45,
             width=300,
             placeholder_text="Category",
+            text_color='white',
             font=("Arial", 25)
         )
         self.search.pack(side="left", padx=10)
@@ -161,6 +162,7 @@ class UI:
             width=120,
             font=("Arial", 25),
             corner_radius=100,
+            
             command=self.start_scraper
         )
         self.start_stop_button.pack(side="left", padx=10)

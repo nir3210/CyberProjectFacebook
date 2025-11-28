@@ -13,7 +13,8 @@ def scrape_facebook_marketplace(should_stop, ui_callback, Get_category):
 
     service = Service(CHROME_PATH)
     driver = webdriver.Chrome(service=service)
-    driver.get("https://facebook.com/marketplace")
+    url = f"https://www.facebook.com/marketplace/108132892547596/search?query={Get_category}"
+    driver.get(url)
 
     # Load cookies
     SRC_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,7 +27,6 @@ def scrape_facebook_marketplace(should_stop, ui_callback, Get_category):
 
     sleep(2)
     driver.refresh()
-    print(f"Starting scraping: https://www.facebook.com/marketplace/108132892547596/search?query={Get_category}")
     sleep(3)
 
     seen_listings = set()
