@@ -15,6 +15,7 @@ def scrape_facebook_marketplace(should_stop, ui_callback, Get_category):
     driver = webdriver.Chrome(service=service)
     driver.get("https://facebook.com/marketplace")
 
+    # Load cookies
     SRC_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     COOKIES_PATH = os.path.join(SRC_DIR, "Settings", "cookies.json")
 
@@ -25,7 +26,7 @@ def scrape_facebook_marketplace(should_stop, ui_callback, Get_category):
 
     sleep(2)
     driver.refresh()
-    print(f"https://www.facebook.com/marketplace/108132892547596/search?query={Get_category}")
+    print(f"Starting scraping: https://www.facebook.com/marketplace/108132892547596/search?query={Get_category}")
     sleep(3)
 
     seen_listings = set()
@@ -54,56 +55,56 @@ def scrape_facebook_marketplace(should_stop, ui_callback, Get_category):
                     "span",
                     class_="x193iq5w xeuugli x13faqbe x1vvkbs x1xmvt09 x1lliihq x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x xudqn12 x676frb x1lkfr7t x1lbecb7 x1s688f xzsf02u"
                 )
-
                 price = None
                 if price_span:
                     price_text = price_span.find(text=True, recursive=False)
                     if price_text:
                         cleaned_price = re.sub(r'[^0-9,]', '', price_text)
                         price = cleaned_price if cleaned_price else "Free"
+
                 # TITLE
                 title_span = listing.find(
                     "span",
                     class_="x1lliihq x6ikm8r x10wlt62 x1n2onr6"
                 )
-                if price == "":
-                    pass
-                
-                title = None
-                if title_span:
-                    title = title_span.find(text=True, recursive=False)
-                
-                if title and price:
-                    try:
-                        translator = Translator()
-                        translated = translator.translate(title, src='he', dest='en').text
+                title = title_span.find(text=True, recursive=False) if title_span else None
 
-                    except Exception as e:
-                        print("Translation failed:", e)
-                        translated = title  
+                # Skip listing if no title or price
+                if not title or not price:
+                    continue
 
-                    print(f"Found listing: {translated}\n{price}")
-                    # REFERER (location) - Always going to be there if there's a title and price
-                    city_span = listing.find(
-                        "span",
-                        class_="x1lliihq x6ikm8r x10wlt62 x1n2onr6 xlyipyv xuxw1ft x1j85h84"
-                    )
-                    city_with_en = city_span.text
-                    city = re.sub('[a-zA-Z,]', '' , city_with_en)
-                    location_a = listing.find(
-                        "a" ,
-                        "x1i10hfl xjbqb8w x1ejq31n x18oe1m7 x1sy0etr xstzfhl x972fbf x10w94by x1qhh985 x14e42zd x9f619 x1ypdohk xt0psk2 x3ct3a4 xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz x1heor9g xkrqix3 x1sur9pj x1s688f x1lku1pv"
-                    )                
-                    referer = location_a.get("href")
-                    full_url = "https://facebook.com"+referer
-                    ui_callback(translated , price , full_url, city)
+                # TRANSLATE TITLE
+                try:
+                    translator = Translator()
+                    translated = translator.translate(title, src='he', dest='en').text
+                except Exception as e:
+                    print("Translation failed:", e)
+                    translated = title
+
+                # CITY / LOCATION
+                city_span = listing.find(
+                    "span",
+                    class_="x1lliihq x6ikm8r x10wlt62 x1n2onr6 xlyipyv xuxw1ft x1j85h84"
+                )
+                city = re.sub('[a-zA-Z,]', '', city_span.text) if city_span else "Unknown"
+
+                location_a = listing.find(
+                    "a",
+                    "x1i10hfl xjbqb8w x1ejq31n x18oe1m7 x1sy0etr xstzfhl x972fbf x10w94by x1qhh985 x14e42zd x9f619 x1ypdohk xt0psk2 x3ct3a4 xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz x1heor9g xkrqix3 x1sur9pj x1s688f x1lku1pv"
+                )
+                full_url = "https://facebook.com" + location_a.get("href") if location_a else "N/A"
+
+                # CALLBACK / OUTPUT
+                print(f"Found listing: {translated}\nPrice: {price}\nCity: {city}\nURL: {full_url}\n")
+                ui_callback(translated, price, full_url, city)
 
             except Exception as e:
-                print(e)
+                print("Error processing listing:", e)
+                continue
 
+        # Scroll page
         driver.execute_script("window.scrollBy(0, 1000);")
         sleep(scroll_pause)
 
     driver.quit()
     print("Scraper stopped cleanly.")
-
