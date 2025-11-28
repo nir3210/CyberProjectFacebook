@@ -22,7 +22,6 @@ class UI:
         self.items_scraped = 0
         self.mode = 'fb'
 
-
         app.grid_columnconfigure(1, weight=1)
         app.grid_rowconfigure(0, weight=1)
 
@@ -36,17 +35,12 @@ class UI:
         self.mode = 'az'
         print("amazon mode")
 
-
     def clear_listing(self):
         for lay in self.my_frame.winfo_children():
             lay.destroy()
 
         self.items_scraped = 0
         self.items_scraped_ui.configure(text=f"Items scraped: {self.items_scraped}")
-
-        if self.label:
-            self.label.destroy()
-            self.label = None
 
     def threaded_scraper(self):
         try:
@@ -87,7 +81,6 @@ class UI:
     def enter_key(self, event=None):
         self.start_scraper()
 
-
     def add_listing_to_ui(self, title, price, link, city):
         self.label = ctk.CTkLabel(
             self.my_frame,
@@ -100,7 +93,6 @@ class UI:
         self.items_scraped += 1
 
         self.items_scraped_ui.configure(text=f"Items scraped: {self.items_scraped}")
-
 
     def make_Button(self, parent, text, height, width, command, bg_corner_color = "#262C3C"):
         return CTkButton(
