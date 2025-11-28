@@ -16,6 +16,7 @@ class UI:
 
         self.scrape_thread = None
         self.stop_flag = False
+        self.search = None
 
         app.grid_columnconfigure(1, weight=1)
         app.grid_rowconfigure(0, weight=1)
@@ -24,13 +25,15 @@ class UI:
 
     def threaded_scraper(self):
         try:
-            # pass UI callback to scraper
-            scrape_facebook_marketplace(self.stop_flag_callback, self.add_listing_to_ui)
+            scrape_facebook_marketplace(self.stop_flag_callback, self.add_listing_to_ui, self.search_callback)
         except Exception as e:
             print("Scraper stopped:", e)
 
     def stop_flag_callback(self):
         return self.stop_flag
+
+    def search_callback(self):
+        return self.search.get()
 
     def start_scraper(self):
         if self.scrape_thread is None or not self.scrape_thread.is_alive():
@@ -49,7 +52,6 @@ class UI:
             self.stop_flag = True
             self.start_stop_button.configure(text="Start")
 
-    # NEW: Called by the scraper for each title + price found
     def add_listing_to_ui(self, title, price, link):
         label = ctk.CTkLabel(
             self.my_frame,
@@ -60,11 +62,10 @@ class UI:
         label.pack(anchor="w", pady=5)
 
     def create_start_ui(self):
-        # SIDEBAR
         self.sidebar = ctk.CTkFrame(
             self.app,
             width=200,
-            corner_radius=10,
+            corner_radius=100,
             bg_color="#343B54",
             fg_color="#343B54"
         )
@@ -79,7 +80,7 @@ class UI:
             font=("ansi", 25),
             width=250
         )
-        self.sidebar_top_text.pack(pady=10, padx=10)
+        self.sidebar_top_text.pack(pady=(20,60), padx=10)
 
         self.facebook_button = CTkButton(
             self.sidebar,
@@ -89,8 +90,10 @@ class UI:
             text_color="#ffffff",
             hover_color="#5C4BB3",
             background_corner_colors=("#343B54",) * 4,
+            corner_radius=100,
             font=("ansi", 25),
-            width=230
+            width=250,
+            height=40
         )
         self.facebook_button.pack(pady=10, padx=10)
 
@@ -102,30 +105,12 @@ class UI:
             text_color="#ffffff",
             hover_color="#5C4BB3",
             background_corner_colors=("#343B54",) * 4,
+            corner_radius=100,
             font=("ansi", 25),
-            width=230
+            width=250,
+            height=40
         )
         self.amazon_button.pack(pady=10, padx=10)
-
-        # MAIN FRAME
-        self.active_frame = CTkFrame(
-            self.app,
-            fg_color=self.bg_color
-        )
-        self.active_frame.grid(row=0, column=1, sticky="nsew", padx=20, pady=20)
-
-        # START / STOP BUTTON
-        self.start_stop_button = CTkButton(
-            self.active_frame,
-            text="Start",
-            fg_color="#8968FD",
-            hover_color="#5C4BB3",
-            height=40,
-            width=80,
-            font=("Arial", 25),
-            command=self.start_scraper
-        )
-        self.start_stop_button.pack(side="top", padx=10, pady=10)
 
         self.exit_button = CTkButton(
             self.sidebar,
@@ -135,11 +120,47 @@ class UI:
             height=40,
             width=80,
             font=("Arial", 25),
+            corner_radius=100,
             command=exit
         )
         self.exit_button.pack(side="bottom", pady=25, padx=100)
 
-        # SCROLLABLE FRAME FOR SCRAPED RESULTS
+        self.active_frame = CTkFrame(
+            self.app,
+            fg_color=self.bg_color
+        )
+        self.active_frame.grid(row=0, column=1, sticky="nsew", padx=20, pady=20)
+
+        self.top_bar = ctk.CTkFrame(self.active_frame, fg_color=self.bg_color)
+        self.top_bar.pack(fill="x", pady=10, padx=10)
+
+        self.search = ctk.CTkEntry(
+            self.top_bar,
+            fg_color="#0C1826",
+            border_color='#0C1826',
+            corner_radius=100,
+            height=45,
+            width=300,
+            placeholder_text="Category",
+            font=("Arial", 25)
+        )
+        self.search.pack(side="left", padx=10)
+
+        self.start_stop_button = CTkButton(
+            self.top_bar,
+            text="Start",
+            fg_color="#8968FD",
+            hover_color="#5C4BB3",
+            height=40,
+            width=120,
+            font=("Arial", 25),
+            corner_radius=100,
+            command=self.start_scraper
+        )
+        self.start_stop_button.pack(side="left", padx=10)
+
+
+
         self.my_frame = ctk.CTkScrollableFrame(
             self.active_frame,
             width=300,
