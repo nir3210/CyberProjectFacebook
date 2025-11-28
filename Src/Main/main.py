@@ -24,7 +24,7 @@ class Main:
             app.wm_iconbitmap(icon_path)
 
 
-        self.bg_color = "#262C3C"
+        self.bg_color = "#272C3F"
         app.configure(fg_color=self.bg_color)
 
 

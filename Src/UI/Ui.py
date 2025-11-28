@@ -20,8 +20,8 @@ class UI:
         self.search = None
         self.label = None
         self.items_scraped = 0
-        self.items_scraped_ui = None
         self.mode = 'fb'
+
 
         app.grid_columnconfigure(1, weight=1)
         app.grid_rowconfigure(0, weight=1)
@@ -30,9 +30,11 @@ class UI:
 
     def set_fb(self):
         self.mode = 'fb'
+        print("facebook mode")
 
     def set_az(self):
         self.mode = 'az'
+        print("amazon mode")
 
 
     def clear_listing(self):
@@ -100,72 +102,32 @@ class UI:
         self.items_scraped_ui.configure(text=f"Items scraped: {self.items_scraped}")
 
 
+    def make_Button(self, parent, text, height, width, command, bg_corner_color = "#262C3C"):
+        return CTkButton(
+            parent,
+            text=text,
+            fg_color="#6561EA",
+            hover_color="#5C4BB3",
+            background_corner_colors=(bg_corner_color,) * 4,
+            corner_radius=100,
+            font=('ansi', 25),
+            width=width,
+            height=height,
+            command=command
+        )
+
+    def make_pack(self, ver, pady=None, padx=None, side=None):
+        ver.pack(pady=pady, padx=padx, side=side)
 
     def create_start_ui(self):
         self.sidebar = ctk.CTkFrame(
             self.app,
-            width=200,
+            width=300,
             corner_radius=100,
             bg_color="#343B54",
             fg_color="#343B54"
         )
         self.sidebar.grid(row=0, column=0, sticky="ns")
-
-        self.sidebar_top_text = CTkLabel(
-            self.sidebar,
-            bg_color="#343B54",
-            text="Mods:",
-            fg_color="#343B54",
-            text_color="#ffffff",
-            font=("ansi", 25),
-            width=250
-        )
-        self.sidebar_top_text.pack(pady=(20,60), padx=10)
-
-        self.facebook_button = CTkButton(
-            self.sidebar,
-            bg_color="#343B54",
-            text="Facebook scraper",
-            fg_color="#7D66F3",
-            text_color="#ffffff",
-            hover_color="#5C4BB3",
-            background_corner_colors=("#343B54",) * 4,
-            corner_radius=100,
-            font=("ansi", 25),
-            width=250,
-            height=40,
-            command=self.set_fb
-        )
-        self.facebook_button.pack(pady=10, padx=10)
-
-        self.amazon_button = CTkButton(
-            self.sidebar,
-            bg_color="#343B54",
-            text="Amazon scraper",
-            fg_color="#7D66F3",
-            text_color="#ffffff",
-            hover_color="#5C4BB3",
-            background_corner_colors=("#343B54",) * 4,
-            corner_radius=100,
-            font=("ansi", 25),
-            width=250,
-            height=40,
-            command=self.set_az
-        )
-        self.amazon_button.pack(pady=10, padx=10)
-
-        self.exit_button = CTkButton(
-            self.sidebar,
-            text="Exit",
-            fg_color="#8968FD",
-            hover_color="#5C4BB3",
-            height=40,
-            width=100,
-            font=("ansi", 25),
-            corner_radius=100,
-            command=exit
-        )
-        self.exit_button.pack(side="bottom", pady=25, padx=100)
 
         self.active_frame = CTkFrame(
             self.app,
@@ -176,31 +138,23 @@ class UI:
         self.top_bar = ctk.CTkFrame(self.active_frame, fg_color=self.bg_color)
         self.top_bar.pack(fill="x", pady=10, padx=10)
 
-        self.search = ctk.CTkEntry(
-            self.top_bar,
-            fg_color="#0C1826",
-            border_color='#0C1826',
-            corner_radius=100,
-            height=45,
+        self.my_frame = ctk.CTkScrollableFrame(
+            self.active_frame,
             width=300,
-            placeholder_text="Category",
-            text_color='white',
-            font=("Arial", 25)
+            height=200,
+            fg_color="#0C1826",
+            corner_radius=20
         )
-        self.search.pack(side="left", padx=10)
+        self.my_frame.pack(fill='both', expand=True, padx=20, pady=20)
 
-        self.start_stop_button = CTkButton(
-            self.top_bar,
-            text="Start",
-            fg_color="#8968FD",
-            hover_color="#5C4BB3",
-            height=40,
-            width=120,
+
+        #Label
+        self.sidebar_top_text = CTkLabel(
+            self.sidebar,
+            text="Mods:",
+            text_color="#ffffff",
             font=("ansi", 25),
-            corner_radius=100,
-            command=self.start_scraper
         )
-        self.start_stop_button.pack(side="left", padx=10)
 
         self.items_scraped_ui = ctk.CTkLabel(
             self.top_bar,
@@ -208,31 +162,83 @@ class UI:
             text_color='#71869C',
             font=('ansi', 18)
         )
-        self.items_scraped_ui.pack(side='left',padx=10)
 
+        #Button
+        self.button_ary = {
+            "facebook_button":[
+                self.sidebar,
+                "Facebook scraper",
+                40,
+                250,
+                self.set_fb,
+                "#343B54"
+            ],
+            "amazon_button":[
+                self.sidebar,
+                "Amazon scraper",
+                40,
+                250,
+                self.set_az,
+                "#343B54"
+            ],
+            "exit_button":[
+                self.sidebar,
+                "Exit",
+                40,
+                100,
+                exit,
+                "#343B54"
+            ],
+            "start_stop_button":[
+                self.top_bar,
+                "Start",
+                40,
+                120,
+                self.start_scraper,
+                None
+            ],
+            "clear":[
+                self.top_bar,
+                "Clear",
+                40,
+                120,
+                self.clear_listing,
+                None
+            ]
+        }
 
-        self.clear = ctk.CTkButton(
+        for ver, values in self.button_ary.items():
+            parent, text, height, width, command, bg_corner_color = values
+            button = self.make_Button(parent, text, height, width, command, bg_corner_color)
+            setattr(self, ver, button)
+
+        #Entry
+        self.search = ctk.CTkEntry(
             self.top_bar,
-            text="Clear",
-            fg_color="#8968FD",
-            hover_color="#5C4BB3",
-            height=40,
-            width=120,
-            font=("Arial", 25),
+            fg_color="#0C1826",
+            border_color="#0C1826",
             corner_radius=100,
-            command=self.clear_listing
-        )
-
-        self.clear.pack(side='right', padx=10)
-
-
-        self.my_frame = ctk.CTkScrollableFrame(
-            self.active_frame,
+            height=45,
             width=300,
-            height=200,
-            fg_color='#0C1826',
-            corner_radius=20
+            placeholder_text="Category",
+            text_color='white',
+            font=("Arial", 25)
         )
-        self.my_frame.pack(fill='both', expand=True, padx=20, pady=20)
+
+        #pack
+        self.pack_ary = {
+            self.sidebar_top_text:[(10,60), 10, None],
+            self.facebook_button:[10, 10, None],
+            self.amazon_button:[10, 10, None],
+            self.exit_button:[25, 100, "bottom"],
+            self.search:[None, 10, "left"],
+            self.start_stop_button:[None, 10, "left"],
+            self.items_scraped_ui:[None, 10, "left"],
+            self.clear:[None, 10, "right"],
+        }
+
+        for ver, values in self.pack_ary.items():
+            pady, padx, side = values
+            self.make_pack(ver, pady, padx, side)
 
         self.app.bind('<Return>', self.enter_key)
