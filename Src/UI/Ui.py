@@ -7,9 +7,10 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from Modules.facebook import scrape_facebook_marketplace
 import customtkinter as ctk
 from customtkinter import CTkLabel, CTkButton, CTkFrame
-
+import webbrowser
 
 class UI:
+
     def __init__(self, app):
         self.app = app
         self.bg_color = "#262C3C"
@@ -25,7 +26,8 @@ class UI:
 
     def threaded_scraper(self):
         try:
-            scrape_facebook_marketplace(self.stop_flag_callback, self.add_listing_to_ui, self.search_callback)
+            category = self.search_callback()
+            scrape_facebook_marketplace(self.stop_flag_callback, self.add_listing_to_ui, category)
         except Exception as e:
             print("Scraper stopped:", e)
 
@@ -34,6 +36,9 @@ class UI:
 
     def search_callback(self):
         return self.search.get()
+
+    def callback(self,url):
+        webbrowser.open_new_tab(url)
 
     def start_scraper(self):
         if self.scrape_thread is None or not self.scrape_thread.is_alive():
@@ -52,13 +57,14 @@ class UI:
             self.stop_flag = True
             self.start_stop_button.configure(text="Start")
 
-    def add_listing_to_ui(self, title, price, link):
+    def add_listing_to_ui(self, title, price, link, city):
         label = ctk.CTkLabel(
             self.my_frame,
-            text=f"title: {title} | price: {price}",
+            text=f"title: {title} | price: {price} | city: {city}",
             text_color="white",
             font=("Arial", 20)
         )
+        label.bind("<Button-1>", lambda e:self.callback(link))
         label.pack(anchor="w", pady=5)
 
     def create_start_ui(self):
@@ -118,7 +124,7 @@ class UI:
             fg_color="#8968FD",
             hover_color="#5C4BB3",
             height=40,
-            width=80,
+            width=100,
             font=("Arial", 25),
             corner_radius=100,
             command=exit

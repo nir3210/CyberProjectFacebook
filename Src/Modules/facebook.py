@@ -7,7 +7,7 @@ import os
 import re
 from googletrans import Translator
 
-def scrape_facebook_marketplace(should_stop, ui_callback):
+def scrape_facebook_marketplace(should_stop, ui_callback, Get_category):
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     CHROME_PATH = os.path.join(BASE_DIR, "..", "..", "ChromeDriver", "chromedriver.exe")
 
@@ -25,6 +25,7 @@ def scrape_facebook_marketplace(should_stop, ui_callback):
 
     sleep(2)
     driver.refresh()
+    print(f"https://www.facebook.com/marketplace/108132892547596/search?query={Get_category}")
     sleep(3)
 
     seen_listings = set()
@@ -88,11 +89,7 @@ def scrape_facebook_marketplace(should_stop, ui_callback):
                         class_="x1lliihq x6ikm8r x10wlt62 x1n2onr6 xlyipyv xuxw1ft x1j85h84"
                     )
                     city_with_en = city_span.text
-                    
                     city = re.sub('[a-zA-Z,]', '' , city_with_en)
-
-
-
                     location_a = listing.find(
                         "a" ,
                         "x1i10hfl xjbqb8w x1ejq31n x18oe1m7 x1sy0etr xstzfhl x972fbf x10w94by x1qhh985 x14e42zd x9f619 x1ypdohk xt0psk2 x3ct3a4 xdj266r x14z9mp xat24cr x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz x1heor9g xkrqix3 x1sur9pj x1s688f x1lku1pv"
