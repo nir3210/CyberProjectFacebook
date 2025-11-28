@@ -10,6 +10,7 @@ if SRC_PATH not in sys.path:
 
 import customtkinter as ctk
 from UI.Ui import UI
+import webbrowser
 
 
 class Main:

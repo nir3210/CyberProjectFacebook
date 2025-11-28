@@ -1,4 +1,6 @@
 import sys
+from re import search
+
 sys.dont_write_bytecode = True
 
 import sys, os, threading
@@ -7,6 +9,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from Modules.facebook import scrape_facebook_marketplace
 import customtkinter as ctk
 from customtkinter import CTkLabel, CTkButton, CTkFrame
+import webbrowser
 
 
 class UI:
@@ -16,6 +19,7 @@ class UI:
 
         self.scrape_thread = None
         self.stop_flag = False
+        self.search = None
 
         app.grid_columnconfigure(1, weight=1)
         app.grid_rowconfigure(0, weight=1)
@@ -24,13 +28,16 @@ class UI:
 
     def threaded_scraper(self):
         try:
-            # pass UI callback to scraper
-            scrape_facebook_marketplace(self.stop_flag_callback, self.add_listing_to_ui)
+            scrape_facebook_marketplace(self.stop_flag_callback, self.add_listing_to_ui, self.search_callback)
         except Exception as e:
             print("Scraper stopped:", e)
 
     def stop_flag_callback(self):
         return self.stop_flag
+
+    def search_callback(self):
+        return_pack = self.search.get()
+        return return_pack
 
     def start_scraper(self):
         if self.scrape_thread is None or not self.scrape_thread.is_alive():
@@ -49,7 +56,9 @@ class UI:
             self.stop_flag = True
             self.start_stop_button.configure(text="Start")
 
-    # NEW: Called by the scraper for each title + price found
+    def callback(self, url):
+        webbrowser.open_new_tab(url)
+
     def add_listing_to_ui(self, title, price, link):
         label = ctk.CTkLabel(
             self.my_frame,
@@ -57,10 +66,11 @@ class UI:
             text_color="white",
             font=("Arial", 20)
         )
+
+        label.bind("<Button-1>", lambda e:self.callback(link))
         label.pack(anchor="w", pady=5)
 
     def create_start_ui(self):
-        # SIDEBAR
         self.sidebar = ctk.CTkFrame(
             self.app,
             width=200,
@@ -107,26 +117,6 @@ class UI:
         )
         self.amazon_button.pack(pady=10, padx=10)
 
-        # MAIN FRAME
-        self.active_frame = CTkFrame(
-            self.app,
-            fg_color=self.bg_color
-        )
-        self.active_frame.grid(row=0, column=1, sticky="nsew", padx=20, pady=20)
-
-        # START / STOP BUTTON
-        self.start_stop_button = CTkButton(
-            self.active_frame,
-            text="Start",
-            fg_color="#8968FD",
-            hover_color="#5C4BB3",
-            height=40,
-            width=80,
-            font=("Arial", 25),
-            command=self.start_scraper
-        )
-        self.start_stop_button.pack(side="top", padx=10, pady=10)
-
         self.exit_button = CTkButton(
             self.sidebar,
             text="Exit",
@@ -139,7 +129,43 @@ class UI:
         )
         self.exit_button.pack(side="bottom", pady=25, padx=100)
 
-        # SCROLLABLE FRAME FOR SCRAPED RESULTS
+        self.active_frame = CTkFrame(
+            self.app,
+            fg_color=self.bg_color
+        )
+        self.active_frame.grid(row=0, column=1, sticky="nsew", padx=20, pady=20)
+
+        self.top_bar = ctk.CTkFrame(self.active_frame, fg_color=self.bg_color)
+        self.top_bar.pack(fill="x", pady=10, padx=10)
+
+        self.search = ctk.CTkEntry(
+            self.top_bar,
+            fg_color="#0C1826",
+            bg_color='#262C3C',
+            border_color=('#262C3C'),
+            text_color='#FFFFFF',
+            corner_radius=10,
+            height=45,
+            width=300,
+            placeholder_text="Category",
+            font=("Arial", 25)
+        )
+        self.search.pack(side="left", padx=10)
+
+        self.start_stop_button = CTkButton(
+            self.top_bar,
+            text="Start",
+            fg_color="#8968FD",
+            hover_color="#5C4BB3",
+            height=40,
+            width=90,
+            font=("Arial", 25),
+            command=self.start_scraper
+        )
+        self.start_stop_button.pack(side="left", padx=10)
+
+
+
         self.my_frame = ctk.CTkScrollableFrame(
             self.active_frame,
             width=300,
@@ -148,3 +174,5 @@ class UI:
             corner_radius=10
         )
         self.my_frame.pack(fill='both', expand=True, padx=20, pady=20)
+
+
