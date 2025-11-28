@@ -53,10 +53,10 @@ class UI:
     def callback(self, url):
         webbrowser.open_new_tab(url)
 
-    def add_listing_to_ui(self, title, price, link):
+    def add_listing_to_ui(self, title, price, link, city):
         label = ctk.CTkLabel(
             self.my_frame,
-            text=f"title: {title} | price: {price}",
+            text=f"title: {title} | price: {price} | city: {city}",
             text_color="white",
             font=("Arial", 20)
         )
