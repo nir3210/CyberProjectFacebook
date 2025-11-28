@@ -24,7 +24,8 @@ class UI:
 
     def threaded_scraper(self):
         try:
-            scrape_facebook_marketplace(self.stop_flag_callback)
+            # pass UI callback to scraper
+            scrape_facebook_marketplace(self.stop_flag_callback, self.add_listing_to_ui)
         except Exception as e:
             print("Scraper stopped:", e)
 
@@ -48,8 +49,18 @@ class UI:
             self.stop_flag = True
             self.start_stop_button.configure(text="Start")
 
+    # NEW: Called by the scraper for each title + price found
+    def add_listing_to_ui(self, title, price):
+        label = ctk.CTkLabel(
+            self.my_frame,
+            text=f"{title} - {price}",
+            text_color="white",
+            font=("Arial", 18)
+        )
+        label.pack(anchor="w", pady=5)
+
     def create_start_ui(self):
-        # SIDEBAR (unchanged)
+        # SIDEBAR
         self.sidebar = ctk.CTkFrame(
             self.app,
             width=200,
@@ -70,7 +81,6 @@ class UI:
         )
         self.sidebar_top_text.pack(pady=10, padx=10)
 
-        # ✔️ Facebook unchanged
         self.facebook_button = CTkButton(
             self.sidebar,
             bg_color="#343B54",
@@ -84,7 +94,6 @@ class UI:
         )
         self.facebook_button.pack(pady=10, padx=10)
 
-        # ✔️ Amazon unchanged
         self.amazon_button = CTkButton(
             self.sidebar,
             bg_color="#343B54",
@@ -117,8 +126,7 @@ class UI:
             command=self.start_scraper
         )
         self.start_stop_button.pack(side="top", padx=10, pady=10)
-        
-        
+
         self.exit_button = CTkButton(
             self.sidebar,
             text="Exit",
@@ -129,18 +137,14 @@ class UI:
             font=("Arial", 25),
             command=exit
         )
-
         self.exit_button.pack(side="bottom", pady=25, padx=100)
-        
+
+        # SCROLLABLE FRAME FOR SCRAPED RESULTS
         self.my_frame = ctk.CTkScrollableFrame(
             self.active_frame,
             width=300,
             height=200,
             fg_color='#0C1826',
             corner_radius=10
-            )
+        )
         self.my_frame.pack(fill='both', expand=True, padx=20, pady=20)
-        
-        
-
-        
