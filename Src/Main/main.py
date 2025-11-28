@@ -16,7 +16,7 @@ import webbrowser
 class Main:
     def __init__(self, app):
         app.title("Facebook Scraper")
-        app.geometry("1000x600")
+        app.geometry("1500x600")
 
         
         icon_path = os.path.join(SRC_PATH, "Images", "appicon.ico")
@@ -26,6 +26,8 @@ class Main:
 
         self.bg_color = "#262C3C"
         app.configure(fg_color=self.bg_color)
+
+
 
 
         self.window = UI(app)

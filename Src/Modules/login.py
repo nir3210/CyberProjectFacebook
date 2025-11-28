@@ -5,7 +5,10 @@ import os
 
 
 def save_cookies():
-    service = Service(executable_path="..\\ChromeDriver\\chromedriver.exe")
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    CHROME_PATH = os.path.join(BASE_DIR, "..", "..", "ChromeDriver", "chromedriver.exe")
+
+    service = Service(executable_path=CHROME_PATH)
     driver = webdriver.Chrome(service=service)
     driver.get("https://facebook.com/marketplace")
 
@@ -20,3 +23,5 @@ def save_cookies():
     COOKIES_PATH = os.path.join(SRC_DIR, "Settings", "cookies.json")
     with open(COOKIES_PATH , 'w') as file:
         json.dump(cookies,file , indent=4)
+
+save_cookies()

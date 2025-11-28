@@ -18,11 +18,25 @@ class UI:
         self.scrape_thread = None
         self.stop_flag = False
         self.search = None
+        self.label = None
+        self.items_scraped = 0
+        self.items_scraped_ui = None
 
         app.grid_columnconfigure(1, weight=1)
         app.grid_rowconfigure(0, weight=1)
 
         self.create_start_ui()
+
+    def clear_listing(self):
+        for lay in self.my_frame.winfo_children():
+            lay.destroy()
+
+        self.items_scraped = 0
+        self.items_scraped_ui.configure(text=f"Items scraped: {self.items_scraped}")
+
+        if self.label:
+            self.label.destroy()
+            self.label = None
 
     def threaded_scraper(self):
         try:
@@ -57,15 +71,24 @@ class UI:
             self.stop_flag = True
             self.start_stop_button.configure(text="Start")
 
+    def enter_key(self, event=None):
+        self.start_scraper()
+
+
     def add_listing_to_ui(self, title, price, link, city):
-        label = ctk.CTkLabel(
+        self.label = ctk.CTkLabel(
             self.my_frame,
             text=f"title: {title} | price: {price} | city: {city}",
             text_color="white",
             font=("Arial", 20)
         )
-        label.bind("<Button-1>", lambda e:self.callback(link))
-        label.pack(anchor="w", pady=5)
+        self.label.bind("<Button-1>", lambda e:self.callback(link))
+        self.label.pack(anchor="w", pady=5)
+        self.items_scraped += 1
+
+        self.items_scraped_ui.configure(text=f"Items scraped: {self.items_scraped}")
+
+
 
     def create_start_ui(self):
         self.sidebar = ctk.CTkFrame(
@@ -80,7 +103,7 @@ class UI:
         self.sidebar_top_text = CTkLabel(
             self.sidebar,
             bg_color="#343B54",
-            text="Mods",
+            text="Mods:",
             fg_color="#343B54",
             text_color="#ffffff",
             font=("ansi", 25),
@@ -160,13 +183,34 @@ class UI:
             hover_color="#5C4BB3",
             height=40,
             width=120,
-            font=("Arial", 25),
+            font=("ansi", 25),
             corner_radius=100,
-            
             command=self.start_scraper
         )
         self.start_stop_button.pack(side="left", padx=10)
 
+        self.items_scraped_ui = ctk.CTkLabel(
+            self.top_bar,
+            text=f"Items scraped: {self.items_scraped}",
+            text_color='#71869C',
+            font=('ansi', 18)
+        )
+        self.items_scraped_ui.pack(side='left',padx=10)
+
+
+        self.clear = ctk.CTkButton(
+            self.top_bar,
+            text="Clear",
+            fg_color="#8968FD",
+            hover_color="#5C4BB3",
+            height=40,
+            width=120,
+            font=("Arial", 25),
+            corner_radius=100,
+            command=self.clear_listing
+        )
+
+        self.clear.pack(side='right', padx=10)
 
 
         self.my_frame = ctk.CTkScrollableFrame(
@@ -177,3 +221,5 @@ class UI:
             corner_radius=10
         )
         self.my_frame.pack(fill='both', expand=True, padx=20, pady=20)
+
+        self.app.bind('<Return>', self.enter_key)
