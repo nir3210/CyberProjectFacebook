@@ -137,7 +137,7 @@ class UI:
             fg_color="#0C1826",
             corner_radius=20
         )
-        self.my_frame.pack(fill='both', expand=True, padx=20, pady=20)
+        self.my_frame.pack(fill='both', expand=True, padx=20, pady=(20,0))
 
 
         #Label
