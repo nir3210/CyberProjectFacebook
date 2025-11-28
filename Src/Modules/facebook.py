@@ -3,14 +3,24 @@ from selenium.webdriver.chrome.service import Service
 from bs4 import BeautifulSoup
 from time import sleep
 import json
+import os
+import re
+import customtkinter as ctk
+from googletrans import Translator
 
-def scrape_facebook_marketplace():
-    service = Service(executable_path="..\\..\\ChromeDriver\\chromedriver.exe")
+def scrape_facebook_marketplace(should_stop):
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    CHROME_PATH = os.path.join(BASE_DIR, "..", "..", "ChromeDriver", "chromedriver.exe")
+
+    service = Service(CHROME_PATH)
     driver = webdriver.Chrome(service=service)
     driver.get("https://facebook.com/marketplace")
 
-    with open("cookies.json", 'r') as file:  # facebook LITERALLY forces u to log in.
-        cookies = json.load(file) 
+    SRC_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    COOKIES_PATH = os.path.join(SRC_DIR, "Settings", "cookies.json")
+
+    with open(COOKIES_PATH, "r") as file:
+        cookies = json.load(file)
         for cookie in cookies:
             driver.add_cookie(cookie)
 
@@ -18,47 +28,63 @@ def scrape_facebook_marketplace():
     driver.refresh()
     sleep(3)
 
-    seen_listings = set() #using set because if something already is inside , it's not going to add it again
+    seen_listings = set()
     scroll_pause = 2
 
-    while True:
-        # Scraping the html , and then getting all listings , because facebook is extremely dumb it needs to be inside the fucking while loop
+    while not should_stop():
         html = driver.page_source
-        soup = BeautifulSoup(html, 'html.parser')
-        listings = soup.find_all('div', class_='x9f619 x78zum5 x1r8uery xdt5ytf x1iyjqo2 xs83m0k x135b78x x11lfxj5 x1iorvi4 xjkvuk6 xnpuxes x1cjf5ee x17dddeq')
-        
-        
-        #this for loop is used because we need to identify if its a dupe or not, we don't want to have the same thing twice.
+        soup = BeautifulSoup(html, "html.parser")
+        listings = soup.find_all(
+            "div", 
+            class_="x9f619 x78zum5 x1r8uery xdt5ytf x1iyjqo2 xs83m0k x135b78x x11lfxj5 x1iorvi4 xjkvuk6 xnpuxes x1cjf5ee x17dddeq"
+        )
+
         for listing in listings:
+            if should_stop():
+                break
+
             listing_id = str(listing)
             if listing_id in seen_listings:
                 continue
 
-            seen_listings.add(listing_id) # adding to the set so we can avoid for next times
-            
+            seen_listings.add(listing_id)
 
-            try:     
-                price_span = listing.find('span', class_='x193iq5w xeuugli x13faqbe x1vvkbs x1xmvt09 x1lliihq x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x xudqn12 x676frb x1lkfr7t x1lbecb7 x1s688f xzsf02u')
+            try:
+                price_span = listing.find(
+                    "span",
+                    class_="x193iq5w xeuugli x13faqbe x1vvkbs x1xmvt09 x1lliihq x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x xudqn12 x676frb x1lkfr7t x1lbecb7 x1s688f xzsf02u"
+                )
+
                 if price_span:
-                    original_proce = price_span.find(text=True, recursive=False) # recursive is default on , but we want only the first value becuase it has 2 values if its on discount and then giving an err : 450 nis 500 nis ...
-                    if original_proce:
-                        print(original_proce.strip()) #not important but need to use as many functions from the course
-                else: # Just pass, Facebook has bs stuff like sponssered and shit and we don't want that messing up our code 
-                    pass
-                sleep(0.1)
+                    price = price_span.find(text=True, recursive=False)
+                    if price:
+                        print(price.strip())
+                        cleaned_string = re.sub(r'[^0-9,]', '', price)
+                        with open("Listings.txt", 'a') as file:
+                            if cleaned_string == '':
+                                file.write(f"Free\n")
+                            file.write(f"{cleaned_string}\n")
+                
+                
+                title_span = listing.find(
+                    "span",
+                    class_ = "x1lliihq x6ikm8r x10wlt62 x1n2onr6"
+                )
+                    
+                if title_span:
+                    title = title_span.find(text=True, recursive=False)
+                    print(title)
+                    translator = Translator()
+                    
             except Exception as e:
                 print(e)
 
-        
+        if should_stop():
+            break
 
-        driver.execute_script("window.scrollBy(0, 1000);")  
+        driver.execute_script("window.scrollBy(0, 1000);")
         sleep(scroll_pause)
 
-    driver.quit() # pointless , will be integrated in the future
-
-
-def main():
-    scrape_facebook_marketplace()
-
-if __name__ == "__main__":
-    main()
+    driver.quit()
+    print("Scraper stopped cleanly.")
+  

@@ -22,11 +22,11 @@ class Main:
         if os.path.exists(icon_path):
             app.wm_iconbitmap(icon_path)
 
-        # Background
+
         self.bg_color = "#262C3C"
         app.configure(fg_color=self.bg_color)
 
-        # Load UI
+
         self.window = UI(app)
 
 
