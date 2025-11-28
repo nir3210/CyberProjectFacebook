@@ -7,6 +7,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from Modules.facebook import scrape_facebook_marketplace
 import customtkinter as ctk
 from customtkinter import CTkLabel, CTkButton, CTkFrame
+import webbrowser
 
 
 class UI:
@@ -49,7 +50,9 @@ class UI:
             self.stop_flag = True
             self.start_stop_button.configure(text="Start")
 
-    # NEW: Called by the scraper for each title + price found
+    def callback(self, url):
+        webbrowser.open_new_tab(url)
+
     def add_listing_to_ui(self, title, price, link):
         label = ctk.CTkLabel(
             self.my_frame,
@@ -57,10 +60,11 @@ class UI:
             text_color="white",
             font=("Arial", 20)
         )
+
+        label.bind("<Button-1>", lambda e:self.callback(link))
         label.pack(anchor="w", pady=5)
 
     def create_start_ui(self):
-        # SIDEBAR
         self.sidebar = ctk.CTkFrame(
             self.app,
             width=200,
@@ -107,14 +111,12 @@ class UI:
         )
         self.amazon_button.pack(pady=10, padx=10)
 
-        # MAIN FRAME
         self.active_frame = CTkFrame(
             self.app,
             fg_color=self.bg_color
         )
         self.active_frame.grid(row=0, column=1, sticky="nsew", padx=20, pady=20)
 
-        # START / STOP BUTTON
         self.start_stop_button = CTkButton(
             self.active_frame,
             text="Start",
@@ -139,7 +141,6 @@ class UI:
         )
         self.exit_button.pack(side="bottom", pady=25, padx=100)
 
-        # SCROLLABLE FRAME FOR SCRAPED RESULTS
         self.my_frame = ctk.CTkScrollableFrame(
             self.active_frame,
             width=300,
