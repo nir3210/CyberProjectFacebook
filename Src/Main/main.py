@@ -17,24 +17,20 @@ class Main:
     def __init__(self, app):
         app.title("Facebook Scraper")
         app.geometry("1500x600")
+        app.attributes("-fullscreen", True)
+        app.after(0, lambda: app.state('zoomed'))
 
-        
         icon_path = os.path.join(SRC_PATH, "Images", "appicon.ico")
         if os.path.exists(icon_path):
             app.wm_iconbitmap(icon_path)
 
-
         self.bg_color = "#272C3F"
         app.configure(fg_color=self.bg_color)
-
-
-
 
         self.window = UI(app)
 
 
 if __name__ == "__main__":
-    
     app = ctk.CTk()
     root = Main(app)
     app.mainloop()

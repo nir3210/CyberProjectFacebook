@@ -21,6 +21,7 @@ class UI:
         self.label = None
         self.items_scraped = 0
         self.mode = 'fb'
+        self.hold_esc = None
 
         app.grid_columnconfigure(1, weight=1)
         app.grid_rowconfigure(0, weight=1)
@@ -80,6 +81,18 @@ class UI:
 
     def enter_key(self, event=None):
         self.start_scraper()
+        
+    def esc_press(self, event=None):
+        self.hold_esc = self.app.after(1000, self.exit_key)
+        
+    def esc_release(self, event=None):
+        if self.hold_esc is not None:
+            self.app.after_cancel(self.hold_esc)
+            self.hold_esc = None
+        
+    def exit_key(self):
+        sys.exit()
+        
 
     def add_listing_to_ui(self, title, price, link, city):
         self.label = ctk.CTkLabel(
@@ -234,3 +247,5 @@ class UI:
             self.make_pack(ver, pady, padx, side)
 
         self.app.bind('<Return>', self.enter_key)
+        self.app.bind("<KeyPress-Escape>", self.esc_press)
+        self.app.bind("<KeyRelease-Escape>", self.esc_release)
