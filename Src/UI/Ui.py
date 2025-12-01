@@ -47,7 +47,21 @@ class UI:
         try:
             if self.mode == 'fb':
                 category = self.search_callback()
-                scrape_facebook_marketplace(self.stop_flag_callback, self.add_listing_to_ui, category)
+                if category == "":
+                    self.stop_flag = True
+                    self.start_stop_button.configure(text="Start")
+                    self.label = ctk.CTkLabel(
+                        self.my_frame,
+                        text="Please Enter A Category Name! Please Try again.",
+                        font= ("ansi", 20),
+                        text_color="white"
+                    )
+                    self.label.pack(anchor='w', pady=3)
+                    
+
+
+                else:
+                    scrape_facebook_marketplace(self.stop_flag_callback, self.add_listing_to_ui, category)
             else:
                 print("amazon")
         except Exception as e:
@@ -83,15 +97,13 @@ class UI:
         self.start_scraper()
         
     def esc_press(self, event=None):
-        self.hold_esc = self.app.after(1000, self.exit_key)
+        self.hold_esc = self.app.after(1000, sys.exit())
         
     def esc_release(self, event=None):
         if self.hold_esc is not None:
             self.app.after_cancel(self.hold_esc)
             self.hold_esc = None
-        
-    def exit_key(self):
-        sys.exit()
+
         
 
     def add_listing_to_ui(self, title, price, link, city):

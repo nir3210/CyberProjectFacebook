@@ -25,12 +25,11 @@ def scrape_facebook_marketplace(should_stop, ui_callback, Get_category):
         for cookie in cookies:
             driver.add_cookie(cookie)
 
-    sleep(0.2)
     driver.refresh()
     sleep(1)
 
     seen_listings = set()
-    scroll_pause = 1.5
+    scroll_pause = 1.25
 
     while not should_stop():
         html = driver.page_source
