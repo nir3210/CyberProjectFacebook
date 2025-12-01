@@ -17,7 +17,6 @@ class Main:
     def __init__(self, app):
         app.title("Facebook Scraper")
         app.geometry("1500x600")
-        app.attributes("-fullscreen", True)
         app.after(0, lambda: app.state('zoomed'))
 
         icon_path = os.path.join(SRC_PATH, "Images", "appicon.ico")
