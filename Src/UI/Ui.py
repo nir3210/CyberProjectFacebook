@@ -1,22 +1,18 @@
 import sys
 sys.dont_write_bytecode = True
 
-import sys, os, threading
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-from Modules.facebook import scrape_facebook_marketplace
+import os
 import customtkinter as ctk
 from customtkinter import CTkLabel, CTkButton, CTkFrame
 import webbrowser
 
 class UI:
 
-    def __init__(self, app):
+    def __init__(self, app, main_instance):
         self.app = app
         self.bg_color = "#262C3C"
+        self.main = main_instance
 
-        self.scrape_thread = None
-        self.stop_flag = False
         self.search = None
         self.label = None
         self.items_scraped = 0
@@ -36,6 +32,24 @@ class UI:
         self.mode = 'az'
         print("amazon mode")
 
+    def change_start_stop_button(self, text):
+        self.start_stop_button.configure(text=text)
+
+    def no_category_error(self):
+        self.label = ctk.CTkLabel(
+            self.my_frame,
+            text="Please Enter A Category Name! Please Try again.",
+            font=("ansi", 20),
+            text_color="white"
+        )
+        self.label.pack(anchor='w', pady=3)
+
+    def get_mode(self):
+        return self.mode
+
+    def set_mode(self, mode):
+        self.mode = mode
+
     def clear_listing(self):
         for lay in self.my_frame.winfo_children():
             lay.destroy()
@@ -43,58 +57,11 @@ class UI:
         self.items_scraped = 0
         self.items_scraped_ui.configure(text=f"Items scraped: {self.items_scraped}")
 
-    def threaded_scraper(self):
-        try:
-            if self.mode == 'fb':
-                category = self.search_callback()
-                if category == "":
-                    self.stop_flag = True
-                    self.start_stop_button.configure(text="Start")
-                    self.label = ctk.CTkLabel(
-                        self.my_frame,
-                        text="Please Enter A Category Name! Please Try again.",
-                        font= ("ansi", 20),
-                        text_color="white"
-                    )
-                    self.label.pack(anchor='w', pady=3)
-                    
-
-
-                else:
-                    scrape_facebook_marketplace(self.stop_flag_callback, self.add_listing_to_ui, category)
-            else:
-                print("amazon")
-        except Exception as e:
-            print("Scraper stopped:", e)
-
-    def stop_flag_callback(self):
-        return self.stop_flag
-
-    def search_callback(self):
-        return self.search.get()
-
     def callback(self,url):
         webbrowser.open_new_tab(url)
 
-    def start_scraper(self):
-        if self.scrape_thread is None or not self.scrape_thread.is_alive():
-            print("Starting scraper...")
-            self.stop_flag = False
-            self.start_stop_button.configure(text="Stop")
-
-            self.scrape_thread = threading.Thread(
-                target=self.threaded_scraper,
-                daemon=True
-            )
-            self.scrape_thread.start()
-
-        else:
-            print("Stopping scraper...")
-            self.stop_flag = True
-            self.start_stop_button.configure(text="Start")
-
     def enter_key(self, event=None):
-        self.start_scraper()
+        self.main.start_scraper()
         
     def esc_press(self, event=None):
         self.hold_esc = self.app.after(1000, sys.exit())
@@ -104,19 +71,20 @@ class UI:
             self.app.after_cancel(self.hold_esc)
             self.hold_esc = None
 
-        
-
     def add_listing_to_ui(self, title, price, link, city):
+        self.app.after(0, lambda: self.safe_add_listing(title, price, link, city))
+
+    def safe_add_listing(self, title, price, link, city):
         self.label = ctk.CTkLabel(
             self.my_frame,
             text=f"Title: {title} | Price: {price} | City: {city}",
             text_color="white",
             font=("ansi", 20)
         )
-        self.label.bind("<Button-1>", lambda e:self.callback(link))
+        self.label.bind("<Button-1>", lambda e: self.callback(link))
         self.label.pack(anchor="w", pady=5)
-        self.items_scraped += 1
 
+        self.items_scraped += 1
         self.items_scraped_ui.configure(text=f"Items scraped: {self.items_scraped}")
 
     def make_Button(self, parent, text, height, width, command, bg_corner_color = "#262C3C"):
@@ -164,7 +132,6 @@ class UI:
         )
         self.my_frame.pack(fill='both', expand=True, padx=20, pady=(20,0))
 
-
         #Label
         self.sidebar_top_text = CTkLabel(
             self.sidebar,
@@ -211,7 +178,7 @@ class UI:
                 "Start",
                 40,
                 120,
-                self.start_scraper,
+                lambda: self.main.start_scraper(),
                 None
             ],
             "clear":[
@@ -258,6 +225,7 @@ class UI:
             pady, padx, side = values
             self.make_pack(ver, pady, padx, side)
 
+        #bind
         self.app.bind('<Return>', self.enter_key)
         self.app.bind("<KeyPress-Escape>", self.esc_press)
         self.app.bind("<KeyRelease-Escape>", self.esc_release)
