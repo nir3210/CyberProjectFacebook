@@ -17,7 +17,6 @@ from Modules.facebook import scrape_facebook_marketplace
 class Main:
     def __init__(self, app):
         app.title("Facebook Scraper")
-        app.geometry("1500x600")
         app.after(0, lambda: app.state('zoomed'))
         self.scrape_thread = None
         self.stop_flag = False
