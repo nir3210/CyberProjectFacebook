@@ -6,6 +6,13 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 
+def parse(text:str, left:str, right:str) -> str:
+    start = text.index(left) + len(left)
+    end = text.index(right , start)
+    return text[start:end]
+
+
+
 def get_average_price(Id:str) -> int:
     
     scraper = cloudscraper.create_scraper()
@@ -40,13 +47,17 @@ def get_average_price(Id:str) -> int:
     print(prices_arr[4].text.strip())
 
 def main():
-    ID = "B0F8LDHQ7Y"
-    get_average_price(ID)
+
+    try:
+        url = input("Enter the url: ")
+        ID = parse(url, 'dp/', '/')
+    except Exception as ValueError:
+        ID = parse(url, 'dp/' , '?')
+    a = get_average_price(ID)
+    
 
 if __name__ == "__main__":
     main()
-
-
 """
 url ref:
 class="a-link-normal s-no-outline"
