@@ -1,27 +1,24 @@
 import sys
 sys.dont_write_bytecode = True
 
-import sys, os, threading
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-from Modules.facebook import scrape_facebook_marketplace
+import os
 import customtkinter as ctk
 from customtkinter import CTkLabel, CTkButton, CTkFrame
 import webbrowser
 
 class UI:
 
-    def __init__(self, app):
+    def __init__(self, app, main_instance):
         self.app = app
         self.bg_color = "#262C3C"
+        self.main = main_instance
 
-        self.scrape_thread = None
-        self.stop_flag = False
         self.search = None
         self.label = None
         self.items_scraped = 0
         self.mode = 'fb'
         self.hold_esc = None
+        self.is_dark_ui_on = False
 
         app.grid_columnconfigure(1, weight=1)
         app.grid_rowconfigure(0, weight=1)
@@ -36,6 +33,24 @@ class UI:
         self.mode = 'az'
         print("amazon mode")
 
+    def change_start_stop_button(self, text):
+        self.start_stop_button.configure(text=text)
+
+    def no_category_error(self):
+        self.label = ctk.CTkLabel(
+            self.my_frame,
+            text="Please Enter A Category Name! Please Try again.",
+            font=("ansi", 20),
+            text_color="white"
+        )
+        self.label.pack(anchor='w', pady=3)
+
+    def get_mode(self):
+        return self.mode
+
+    def set_mode(self, mode):
+        self.mode = mode
+
     def clear_listing(self):
         for lay in self.my_frame.winfo_children():
             lay.destroy()
@@ -43,80 +58,27 @@ class UI:
         self.items_scraped = 0
         self.items_scraped_ui.configure(text=f"Items scraped: {self.items_scraped}")
 
-    def threaded_scraper(self):
-        try:
-            if self.mode == 'fb':
-                category = self.search_callback()
-                if category == "":
-                    self.stop_flag = True
-                    self.start_stop_button.configure(text="Start")
-                    self.label = ctk.CTkLabel(
-                        self.my_frame,
-                        text="Please Enter A Category Name! Please Try again.",
-                        font= ("ansi", 20),
-                        text_color="white"
-                    )
-                    self.label.pack(anchor='w', pady=3)
-                    
-
-
-                else:
-                    scrape_facebook_marketplace(self.stop_flag_callback, self.add_listing_to_ui, category)
-            else:
-                print("amazon")
-        except Exception as e:
-            print("Scraper stopped:", e)
-
-    def stop_flag_callback(self):
-        return self.stop_flag
-
-    def search_callback(self):
-        return self.search.get()
-
     def callback(self,url):
         webbrowser.open_new_tab(url)
 
-    def start_scraper(self):
-        if self.scrape_thread is None or not self.scrape_thread.is_alive():
-            print("Starting scraper...")
-            self.stop_flag = False
-            self.start_stop_button.configure(text="Stop")
-
-            self.scrape_thread = threading.Thread(
-                target=self.threaded_scraper,
-                daemon=True
-            )
-            self.scrape_thread.start()
-
-        else:
-            print("Stopping scraper...")
-            self.stop_flag = True
-            self.start_stop_button.configure(text="Start")
-
     def enter_key(self, event=None):
-        self.start_scraper()
-        
-    def esc_press(self, event=None):
-        self.hold_esc = self.app.after(1000, sys.exit())
-        
-    def esc_release(self, event=None):
-        if self.hold_esc is not None:
-            self.app.after_cancel(self.hold_esc)
-            self.hold_esc = None
+        self.main.start_scraper()
 
-        
 
     def add_listing_to_ui(self, title, price, link, city):
+        self.app.after(0, lambda: self.safe_add_listing(title, price, link, city))
+
+    def safe_add_listing(self, title, price, link, city):
         self.label = ctk.CTkLabel(
             self.my_frame,
             text=f"Title: {title} | Price: {price} | City: {city}",
             text_color="white",
             font=("ansi", 20)
         )
-        self.label.bind("<Button-1>", lambda e:self.callback(link))
+        self.label.bind("<Button-1>", lambda e: self.callback(link))
         self.label.pack(anchor="w", pady=5)
-        self.items_scraped += 1
 
+        self.items_scraped += 1
         self.items_scraped_ui.configure(text=f"Items scraped: {self.items_scraped}")
 
     def make_Button(self, parent, text, height, width, command, bg_corner_color = "#262C3C"):
@@ -136,6 +98,61 @@ class UI:
     def make_pack(self, ver, pady=None, padx=None, side=None):
         ver.pack(pady=pady, padx=padx, side=side)
 
+    def dark_overlay(self):
+        self.is_dark_ui_on = True
+        self.exit_overlay = ctk.CTkToplevel(self.app, fg_color="#000000")
+        self.exit_overlay.attributes("-alpha", 0.3)
+        self.exit_overlay.overrideredirect(True)
+        self.exit_overlay.geometry(f"{self.app.winfo_width()}x{self.app.winfo_height()}+{self.app.winfo_rootx()}+{self.app.winfo_rooty()}")
+        self.exit_overlay.lift()
+        self.exit_overlay.grab_set()
+
+    def close_exit_overlay(self):
+        if self.exit_overlay:
+            self.exit_overlay.destroy()
+            self.is_dark_ui_on = False
+
+    def exit_ui(self, event=None):
+        if not self.is_dark_ui_on:
+            self.dark_overlay()
+            self.exit_frame = ctk.CTkFrame(self.exit_overlay, height=150, width=350, fg_color="#000", corner_radius=15)
+            self.exit_frame.place(relx=0.5, rely=0.5, anchor="center")
+
+            self.exit_frame.grid_rowconfigure(0, weight=1)
+            self.exit_frame.grid_rowconfigure(1, weight=1)
+            self.exit_frame.grid_columnconfigure(0, weight=1)
+            self.exit_frame.grid_columnconfigure(1, weight=1)
+
+            lay = ctk.CTkLabel(self.exit_frame, text="Do you want to quit the app", fg_color="#000", text_color="white", font=("ansi", 25))
+            lay.grid(row=0, column=0, columnspan=2, pady=5, padx=5)
+
+            exit_dir = {
+                "yesbtn":[
+                    self.exit_frame,
+                    "Yes",
+                    40, 100,
+                    exit,
+                    "#000"
+                ],
+                "nobtn":[
+                    self.exit_frame,
+                    "No",
+                    40, 100,
+                    self.close_exit_overlay,
+                    "#000"
+                ]
+            }
+            for ver, values in exit_dir.items():
+                parent, text, height, width, command, bg_corner_color = values
+                button = self.make_Button(parent, text, height, width, command, bg_corner_color)
+                setattr(self, ver, button)
+
+
+            self.yesbtn.grid(row=1, column=0, pady=5, padx=5)
+            self.nobtn.grid(row=1, column=1, pady=5, padx=5)
+        else:
+            self.close_exit_overlay()
+
     def create_start_ui(self):
         self.sidebar = ctk.CTkFrame(
             self.app,
@@ -146,10 +163,7 @@ class UI:
         )
         self.sidebar.grid(row=0, column=0, sticky="ns")
 
-        self.active_frame = CTkFrame(
-            self.app,
-            fg_color=self.bg_color
-        )
+        self.active_frame = CTkFrame(self.app, fg_color=self.bg_color)
         self.active_frame.grid(row=0, column=1, sticky="nsew", padx=20, pady=20)
 
         self.top_bar = ctk.CTkFrame(self.active_frame, fg_color=self.bg_color)
@@ -163,7 +177,6 @@ class UI:
             corner_radius=20
         )
         self.my_frame.pack(fill='both', expand=True, padx=20, pady=(20,0))
-
 
         #Label
         self.sidebar_top_text = CTkLabel(
@@ -203,7 +216,7 @@ class UI:
                 "Exit",
                 40,
                 100,
-                exit,
+                self.exit_ui,
                 "#343B54"
             ],
             "start_stop_button":[
@@ -211,7 +224,7 @@ class UI:
                 "Start",
                 40,
                 120,
-                self.start_scraper,
+                lambda: self.main.start_scraper(),
                 None
             ],
             "clear":[
@@ -258,6 +271,6 @@ class UI:
             pady, padx, side = values
             self.make_pack(ver, pady, padx, side)
 
+        #bind
         self.app.bind('<Return>', self.enter_key)
-        self.app.bind("<KeyPress-Escape>", self.esc_press)
-        self.app.bind("<KeyRelease-Escape>", self.esc_release)
+        self.app.bind("<Escape>", self.exit_ui)

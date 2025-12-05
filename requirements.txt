@@ -4,4 +4,3 @@ bs4
 requests
 googletrans==4.0.0-rc1
 legacy-cgi
-cloudscraper
