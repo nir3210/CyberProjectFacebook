@@ -1,17 +1,16 @@
 import sys
 sys.dont_write_bytecode = True
 
-import cloudscraper
+import os
+import json
+from time import sleep
+
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from bs4 import BeautifulSoup
-import os
-from time import sleep
-import json
 
 
 def parse(text: str, left: str, right: str) -> str:
@@ -21,8 +20,10 @@ def parse(text: str, left: str, right: str) -> str:
 
 def scrape_listings(soup):
     listings = soup.find_all('div',class_='sg-col-4-of-24 sg-col-4-of-12 s-result-item s-asin sg-col-4-of-16 sg-col s-widget-spacing-small sg-col-4-of-20 gsx-ies-anchor') 
+    
     if listings == []:
         listings = soup.find_all('div', class_='sg-col-20-of-24 s-result-item s-asin sg-col-0-of-12 sg-col-16-of-20 sg-col s-widget-spacing-small gsx-ies-anchor sg-col-12-of-16')
+    
     for listing in listings:
         price_span = listing.find('span', 'a-price-whole')
         if price_span:
