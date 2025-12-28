@@ -20,7 +20,9 @@ def parse(text: str, left: str, right: str) -> str:
     return text[start:end]
 
 def scrape_listings(soup):
-    listings = soup.find_all('div',class_='sg-col-4-of-24 sg-col-4-of-12 s-result-item s-asin sg-col-4-of-16 sg-col s-widget-spacing-small sg-col-4-of-20 gsx-ies-anchor')
+    listings = soup.find_all('div',class_='sg-col-4-of-24 sg-col-4-of-12 s-result-item s-asin sg-col-4-of-16 sg-col s-widget-spacing-small sg-col-4-of-20 gsx-ies-anchor') 
+    if listings == []:
+        listings = soup.find_all('div', class_='sg-col-20-of-24 s-result-item s-asin sg-col-0-of-12 sg-col-16-of-20 sg-col s-widget-spacing-small gsx-ies-anchor sg-col-12-of-16')
     for listing in listings:
         price_span = listing.find('span', 'a-price-whole')
         if price_span:
@@ -87,10 +89,6 @@ def scrape_amazon():
             next_page_btn.click()
         
         sleep(2)
-
-
-    sleep(100)
-
 
 
 def get_average_price(Id: str) -> int:
