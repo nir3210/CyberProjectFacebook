@@ -77,18 +77,24 @@ def searchAmazon(driver: webdriver.Chrome , query):
 
 
 
-def scrape_listings(soup):
+def scrape_listings(soup, results_list):
     listings = soup.find_all('div', {'data-asin': True})  # more generic, catches all products  - every amazon product has it
     debug(f"Found {len(listings)} listings")
     
     for listing in listings:
         title_h2 = listing.find('h2', class_="a-size-medium a-spacing-none a-color-base a-text-normal")
         price_span = listing.find('span', class_='a-price-whole')
-        
-        if title_h2 and price_span:
+        asin = listing.get("data-asin") # .get is just a method that 
+        if title_h2 and price_span and asin:
             title = title_h2.get_text().strip()
-            price = price_span.contents[0].strip()
-            debug(f"Title: {title} | Price: {price}$" , 1)
+            price = price_span.contents[0].strip() # in a span in beaufiul sopup its being stored in an array , we can just get the first elemenet
+            debug(f"Title: {title} | Price: {price}$ | data: {asin.strip()}" , 1) 
+            results_list.append({
+                "title": title,
+                "price": price,
+                "asin": asin,
+                "url": f"https://amazon.com/dp/{asin}"
+            }) # dict is just so much easier than an array , not even talking about o(1) complexety instead of o(n)
         else:
             continue
 
@@ -127,27 +133,31 @@ def main() -> None:
     set_currency_nis_to_usd(driver)
 
     searchAmazon(driver, "cpu cooler")
-    html = driver.page_source 
-    soup = BeautifulSoup(html, 'html.parser')
-    while True:
-            soup = BeautifulSoup(driver.page_source, "html.parser")
-            scrape_listings(soup)
-            next_page = go_to_next_page(driver, soup)
+    results = [] # array to store the results
 
-            if not next_page:
-                break # no more pages
+    while True:
+        soup = BeautifulSoup(driver.page_source, "html.parser")
+        scrape_listings(soup, results)  # pass results list
+        next_page = go_to_next_page(driver, soup)
+
+        if not next_page:
+            break # means that nothing 
+
+    # Save everything to JSON at the end - Will need to implement scs
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    RESULTS_PATH = os.path.join(BASE_DIR, "..", "..", "Results", "Amazon") # again , work with absolut path its so much better
+    os.makedirs(RESULTS_PATH, exist_ok=True)
+    file_path = os.path.join(RESULTS_PATH, "results.json")
+
+    with open(file_path, 'w', encoding='utf-8') as f:
+        json.dump(results, f, indent=4, ensure_ascii=False) # ensure ascii false becuase amazon is weird , doesn't really matter although i like to add it to not cause any issues
+
+    debug(f"Saved {len(results)} results to {file_path}")
+
 
 if __name__ == "__main__":
     main()
     sleep(100)
 
-
-"""
-def get_arrays_as_list():
-    array1 = [1, 2, 3]
-    array2 = [4, 5, 6]
-    return [array1, array2]
-
-"""
 
 
