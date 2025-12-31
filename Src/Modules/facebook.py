@@ -14,7 +14,10 @@ def scrape_facebook_marketplace(should_stop, ui_callback, Get_category, debug):
 
     service = Service(CHROME_PATH)
     options = Options()
-
+    prefs = {
+    "profile.default_content_setting_values.notifications": 2
+    }
+    options.add_experimental_option("prefs", prefs)
     if not debug:
         options.add_argument("--headless=new")
 
