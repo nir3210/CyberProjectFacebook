@@ -88,8 +88,39 @@ def scrape_listings(soup):
         if title_h2 and price_span:
             title = title_h2.get_text().strip()
             price = price_span.contents[0].strip()
-            debug(f"Title: {title[:11]} | Price: {price}$" , 1)
+            debug(f"Title: {title} | Price: {price}$" , 1)
+        else:
+            continue
 
+
+
+def go_to_next_page(driver, soup) -> bool:
+    try:
+        next_btn = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, "a.s-pagination-next"))
+        )
+
+        next_btn.click()
+
+        # wait for products on the next page
+        WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "div[data-asin]"))
+        )
+        wait = WebDriverWait(driver, 10) # max 10 seconds before Quiting!
+        next_button_selector = ".s-pagination-next"  
+        next_page_btn = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, next_button_selector))) # search for the element , and wait for it to be avaliable
+        string_page_btn = soup.select(next_button_selector)
+        
+        if "s-pagination-disabled" in str(string_page_btn):
+            print(f"[DEBUG]: no more pages to scrape, exiting!")
+            sleep(100)
+            driver.quit()
+            exit()
+            return False
+        return True
+
+    except:
+        return False
 
 def main() -> None:
     driver = initDriver()
@@ -98,7 +129,13 @@ def main() -> None:
     searchAmazon(driver, "cpu cooler")
     html = driver.page_source 
     soup = BeautifulSoup(html, 'html.parser')
-    scrape_listings(soup)
+    while True:
+            soup = BeautifulSoup(driver.page_source, "html.parser")
+            scrape_listings(soup)
+            next_page = go_to_next_page(driver, soup)
+
+            if not next_page:
+                break # no more pages
 
 if __name__ == "__main__":
     main()
