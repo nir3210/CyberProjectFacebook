@@ -54,7 +54,7 @@ class Main:
                     self.window.no_category_error()
                     
                 else:
-                    amazonScrape(category, debug)
+                    amazonScrape(self.stop_flag_callback ,category, debug)
                     
                 self.window.change_start_stop_button("Start")
         except Exception as e:

@@ -146,22 +146,22 @@ def save_listing(results):
 
     debug(f"Saved {len(results)} results to {file_path}")
 
-def amazonScrape(search, debug) -> None:
+def amazonScrape(should_stop, search, debug) -> None:
     driver = initDriver(debug)
     set_currency_nis_to_usd(driver)
 
     searchAmazon(driver, search)
     results = [] # array to store the results
 
-    while True:
+    while not should_stop():
         soup = BeautifulSoup(driver.page_source, "html.parser")
         scrape_listings(soup, results)  # pass results list
         next_page = go_to_next_page(driver, soup)
 
         if not next_page:
             break # means that nothing 
-
+    
+    driver.quit()
     save_listing(results)
-
 
 
