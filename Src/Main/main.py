@@ -12,7 +12,7 @@ if SRC_PATH not in sys.path:
 
 from UI.Ui import UI
 from Modules.facebook import scrape_facebook_marketplace
-
+from Modules.amazon import amazonScrape
 
 class Main:
     def __init__(self, app):
@@ -45,6 +45,15 @@ class Main:
                     scrape_facebook_marketplace(self.stop_flag_callback, self.add_listing_to_ui, category)
             else:
                 print("amazon")
+                category = self.search_callback()
+                if category == "":
+                    self.stop_flag = True
+                    self.window.change_start_stop_button("Start")
+                    self.window.no_category_error()
+                    
+                else:
+                    amazonScrape(category)
+                    
                 self.window.change_start_stop_button("Start")
         except Exception as e:
             print("Scraper stopped:", e)
