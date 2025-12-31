@@ -3,7 +3,8 @@ sys.dont_write_bytecode = True
 
 import os
 import customtkinter as ctk
-from customtkinter import CTkLabel, CTkButton, CTkFrame
+from customtkinter import CTkLabel, CTkButton, CTkFrame, CTkSwitch, StringVar
+import tkinter as tk
 import webbrowser
 
 class UI:
@@ -19,6 +20,8 @@ class UI:
         self.mode = 'fb'
         self.hold_esc = None
         self.is_dark_ui_on = False
+        self.debug = False
+        self.debug_var = ctk.StringVar(value="off")
 
         app.grid_columnconfigure(1, weight=1)
         app.grid_rowconfigure(0, weight=1)
@@ -80,6 +83,15 @@ class UI:
 
     def make_pack(self, ver, pady=None, padx=None, side=None):
         ver.pack(pady=pady, padx=padx, side=side)
+
+    def degug_on_off(self):
+        if self.debug:
+            self.debug = False
+        else:
+            self.debug = True
+
+    def return_debug_state(self):
+        return self.debug
 
     def dark_overlay(self):
         self.is_dark_ui_on = True
@@ -225,6 +237,24 @@ class UI:
             button = self.make_Button(parent, text, height, width, command, bg_corner_color)
             setattr(self, ver, button)
 
+
+        self.debug_button = ctk.CTkSwitch(
+            self.sidebar,
+            text="Debugging",
+            command=self.degug_on_off,
+            font=("ansi",25),
+            switch_height=25,
+            switch_width=50,
+            text_color="white",
+            button_hover_color="#5C4BB3",
+            button_color="#6561EA",
+            progress_color="#343278",
+            fg_color="#0C1826",
+            variable=self.debug_var,
+            onvalue="on",
+            offvalue="off"
+        )
+
         #Entry
         self.search = ctk.CTkEntry(
             self.top_bar,
@@ -243,6 +273,7 @@ class UI:
             self.sidebar_top_text:[(10,60), 10, None],
             self.facebook_button:[10, 10, None],
             self.amazon_button:[10, 10, None],
+            self.debug_button:[10, 10, None],
             self.exit_button:[25, 100, "bottom"],
             self.search:[None, 10, "left"],
             self.start_stop_button:[None, 10, "left"],

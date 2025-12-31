@@ -108,6 +108,10 @@ class Main:
         self.items_scraped += 1
         self.window.items_scraped_ui.configure(text=f"Items scraped: {self.window.items_scraped}")
 
+    def is_debug_on(self):
+        return self.window.return_debug_state()
+
+
 
 if __name__ == "__main__":
     app = ctk.CTk()
