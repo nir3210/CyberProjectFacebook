@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from bs4 import BeautifulSoup
 from time import sleep
@@ -7,12 +8,18 @@ import os
 import re
 from googletrans import Translator
 
-def scrape_facebook_marketplace(should_stop, ui_callback, Get_category):
+def scrape_facebook_marketplace(should_stop, ui_callback, Get_category, debug):
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     CHROME_PATH = os.path.join(BASE_DIR, "..", "..", "ChromeDriver", "chromedriver.exe")
 
     service = Service(CHROME_PATH)
-    driver = webdriver.Chrome(service=service)
+    options = Options()
+
+    if not debug:
+        options.add_argument("--headless=new")
+
+    driver = webdriver.Chrome(service=service, options=options)
+
     url = f"https://www.facebook.com/marketplace/108132892547596/search?query={Get_category}"
     driver.get(url)
 

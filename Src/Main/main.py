@@ -34,7 +34,9 @@ class Main:
 
     def threaded_scraper(self):
         try:
+            debug = self.is_debug_on() if True else False
             if self.window.get_mode() == 'fb':
+
                 category = self.search_callback()
                 if category == "":
                     self.stop_flag = True
@@ -42,7 +44,7 @@ class Main:
                     self.window.no_category_error()
 
                 else:
-                    scrape_facebook_marketplace(self.stop_flag_callback, self.add_listing_to_ui, category)
+                    scrape_facebook_marketplace(self.stop_flag_callback, self.add_listing_to_ui, category , debug)
             else:
                 print("amazon")
                 category = self.search_callback()
@@ -52,7 +54,7 @@ class Main:
                     self.window.no_category_error()
                     
                 else:
-                    amazonScrape(category)
+                    amazonScrape(category, debug)
                     
                 self.window.change_start_stop_button("Start")
         except Exception as e:
@@ -66,6 +68,7 @@ class Main:
 
     def start_scraper(self):
         if self.scrape_thread is None or not self.scrape_thread.is_alive():
+            
             print("Starting scraper...")
             self.stop_flag = False
             self.window.change_start_stop_button("Stop")

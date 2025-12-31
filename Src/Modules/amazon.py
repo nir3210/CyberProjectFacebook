@@ -9,6 +9,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support import expected_conditions as EC
 from colorama import Fore, init
 init(autoreset=True)
@@ -23,14 +24,19 @@ def debug(message:str, mode=0) -> None:
     print(phrased_message)
 
 # basically just init the driver and get it ready , will be implemented new features in the future e.g: diff drivers auto install chromedriver etc.  
-def initDriver() -> webdriver.Chrome:
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__)) # i got to use absolute path , python works weirdly with the defs and calling functions from other files , i want to avoid that mess 
-    CHROME_PATH = os.path.join(BASE_DIR, "..", "..","ChromeDriver", "chromedriver.exe") 
+def initDriver(debug_enabled: bool) -> webdriver.Chrome:
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__)) # absolut path
+    CHROME_PATH = os.path.join(BASE_DIR, "..", "..", "ChromeDriver", "chromedriver.exe")
+
     service = Service(CHROME_PATH)
-    driver = webdriver.Chrome(service=service)
-    if driver:
-        debug("initialized driver", 1)
-        return driver # gotta return it , duh.
+    options = Options()
+
+    if not debug_enabled:
+        options.add_argument("--headless=new")
+
+    driver = webdriver.Chrome(service=service, options=options)
+    debug("initialized driver", 1)
+    return driver # gotta return it , duh.
 
 # this function mainly exists because we use camelcamelcamel api , its working with usd so why we wouldn't?
 """
@@ -140,8 +146,8 @@ def save_listing(results):
 
     debug(f"Saved {len(results)} results to {file_path}")
 
-def amazonScrape(search) -> None:
-    driver = initDriver()
+def amazonScrape(search, debug) -> None:
+    driver = initDriver(debug)
     set_currency_nis_to_usd(driver)
 
     searchAmazon(driver, search)
