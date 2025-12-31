@@ -83,7 +83,7 @@ def searchAmazon(driver: webdriver.Chrome , query):
 
 
 
-def scrape_listings(soup, results_list):
+def scrape_listings(soup,ui_callback, results_list):
     listings = soup.find_all('div', {'data-asin': True})  # more generic, catches all products  - every amazon product has it
     debug(f"Found {len(listings)} listings")
     
@@ -95,6 +95,7 @@ def scrape_listings(soup, results_list):
             title = title_h2.get_text().strip()
             price = price_span.contents[0].strip() # in a span in beaufiul sopup its being stored in an array , we can just get the first elemenet
             debug(f"Title: {title} | Price: {price}$ | data: {asin.strip()}" , 1) 
+            ui_callback(title,price, f"https://amazon.com/dp/{asin}")
             results_list.append({
                 "title": title,
                 "price": price,
@@ -146,7 +147,7 @@ def save_listing(results):
 
     debug(f"Saved {len(results)} results to {file_path}")
 
-def amazonScrape(should_stop, search, debug) -> None:
+def amazonScrape(should_stop,ui_callback, search, debug) -> None:
     driver = initDriver(debug)
     set_currency_nis_to_usd(driver)
 
@@ -155,7 +156,7 @@ def amazonScrape(should_stop, search, debug) -> None:
 
     while not should_stop():
         soup = BeautifulSoup(driver.page_source, "html.parser")
-        scrape_listings(soup, results)  # pass results list
+        scrape_listings(soup,ui_callback, results)  # pass results list
         next_page = go_to_next_page(driver, soup)
 
         if not next_page:

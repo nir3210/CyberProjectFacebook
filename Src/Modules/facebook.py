@@ -103,7 +103,7 @@ def scrape_facebook_marketplace(should_stop, ui_callback, Get_category, debug):
                 # CALLBACK / OUTPUT
                 print(f"Found listing: {translated}\nPrice: {price}\nCity: {city}\nURL: {full_url}\n")
                 ui_callback(translated, price, full_url, city)
-
+                
             except Exception as e:
                 print("Error processing listing:", e)
                 continue

@@ -54,7 +54,7 @@ class Main:
                     self.window.no_category_error()
                     
                 else:
-                    amazonScrape(self.stop_flag_callback ,category, debug)
+                    amazonScrape(self.stop_flag_callback, self.add_listing_to_ui_amazon ,category, debug)
                     
                 self.window.change_start_stop_button("Start")
         except Exception as e:
@@ -84,7 +84,7 @@ class Main:
             self.stop_flag = True
             self.window.start_stop_button.configure(text="Start")
 
-    def add_listing_to_ui(self, title, price, link, city=None):
+    def add_listing_to_ui(self, title, price, link, city):
         self.window.app.after(0, lambda: self.safe_add_listing(title, price, link, city))
 
     def safe_add_listing(self, title, price, link, city):
@@ -98,18 +98,25 @@ class Main:
             self.label.bind("<Button-1>", lambda e: self.window.callback(link))
             self.label.pack(anchor="w", pady=5)
 
-        else:
-            self.label = ctk.CTkLabel(
-                self.window.my_frame,
-                text=f"Title: {title} | Price: {price}",
-                text_color="white",
-                font=("ansi", 20)
-            )
-            self.label.bind("<Button-1>", lambda e: self.window.callback(link))
-            self.label.pack(anchor="w", pady=5)
+        self.items_scraped += 1
+        self.window.items_scraped_ui.configure(text=f"Items scraped: {self.window.items_scraped}")
+
+    def add_listing_to_ui_amazon(self, title, price, link):
+        self.window.app.after(0, lambda: self.safe_add_listing_amazon(title, price, link))
+
+    def safe_add_listing_amazon(self, title, price, link):
+        self.label = ctk.CTkLabel(
+            self.window.my_frame,
+            text=f"Title: {title} | Price: {price}",
+            text_color="white",
+            font=("ansi", 20)
+        )
+        self.label.bind("<Button-1>", lambda e: self.window.callback(link))
+        self.label.pack(anchor="w", pady=5)
 
         self.items_scraped += 1
         self.window.items_scraped_ui.configure(text=f"Items scraped: {self.window.items_scraped}")
+
 
     def is_debug_on(self):
         return self.window.return_debug_state()
