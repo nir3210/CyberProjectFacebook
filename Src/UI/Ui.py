@@ -64,23 +64,6 @@ class UI:
     def enter_key(self, event=None):
         self.main.start_scraper()
 
-
-    def add_listing_to_ui(self, title, price, link, city):
-        self.app.after(0, lambda: self.safe_add_listing(title, price, link, city))
-
-    def safe_add_listing(self, title, price, link, city):
-        self.label = ctk.CTkLabel(
-            self.my_frame,
-            text=f"Title: {title} | Price: {price} | City: {city}",
-            text_color="white",
-            font=("ansi", 20)
-        )
-        self.label.bind("<Button-1>", lambda e: self.callback(link))
-        self.label.pack(anchor="w", pady=5)
-
-        self.items_scraped += 1
-        self.items_scraped_ui.configure(text=f"Items scraped: {self.items_scraped}")
-
     def make_Button(self, parent, text, height, width, command, bg_corner_color = "#262C3C"):
         return CTkButton(
             parent,
