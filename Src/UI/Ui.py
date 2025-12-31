@@ -67,6 +67,9 @@ class UI:
     def enter_key(self, event=None):
         self.main.start_scraper()
 
+    def exit_ui(self, event=None):
+        sys.exit()
+
     def make_Button(self, parent, text, height, width, command, bg_corner_color = "#262C3C"):
         return CTkButton(
             parent,
@@ -93,60 +96,7 @@ class UI:
     def return_debug_state(self):
         return self.debug
 
-    def dark_overlay(self):
-        self.is_dark_ui_on = True
-        self.exit_overlay = ctk.CTkToplevel(self.app, fg_color="#000000")
-        self.exit_overlay.attributes("-alpha", 0.3)
-        self.exit_overlay.overrideredirect(True)
-        self.exit_overlay.geometry(f"{self.app.winfo_width()}x{self.app.winfo_height()}+{self.app.winfo_rootx()}+{self.app.winfo_rooty()}")
-        self.exit_overlay.lift()
-        self.exit_overlay.grab_set()
 
-    def close_exit_overlay(self):
-        if self.exit_overlay:
-            self.exit_overlay.destroy()
-            self.is_dark_ui_on = False
-
-    def exit_ui(self, event=None):
-        if not self.is_dark_ui_on:
-            self.dark_overlay()
-            self.exit_frame = ctk.CTkFrame(self.exit_overlay, height=150, width=350, fg_color="#000", corner_radius=15)
-            self.exit_frame.place(relx=0.5, rely=0.5, anchor="center")
-
-            self.exit_frame.grid_rowconfigure(0, weight=1)
-            self.exit_frame.grid_rowconfigure(1, weight=1)
-            self.exit_frame.grid_columnconfigure(0, weight=1)
-            self.exit_frame.grid_columnconfigure(1, weight=1)
-
-            lay = ctk.CTkLabel(self.exit_frame, text="Do you want to quit the app", fg_color="#000", text_color="white", font=("ansi", 25))
-            lay.grid(row=0, column=0, columnspan=2, pady=5, padx=5)
-
-            exit_dir = {
-                "yesbtn":[
-                    self.exit_frame,
-                    "Yes",
-                    40, 100,
-                    exit,
-                    "#000"
-                ],
-                "nobtn":[
-                    self.exit_frame,
-                    "No",
-                    40, 100,
-                    self.close_exit_overlay,
-                    "#000"
-                ]
-            }
-            for ver, values in exit_dir.items():
-                parent, text, height, width, command, bg_corner_color = values
-                button = self.make_Button(parent, text, height, width, command, bg_corner_color)
-                setattr(self, ver, button)
-
-
-            self.yesbtn.grid(row=1, column=0, pady=5, padx=5)
-            self.nobtn.grid(row=1, column=1, pady=5, padx=5)
-        else:
-            self.close_exit_overlay()
 
     def create_start_ui(self):
         self.sidebar = ctk.CTkFrame(

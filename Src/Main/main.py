@@ -98,7 +98,7 @@ class Main:
             self.label.bind("<Button-1>", lambda e: self.window.callback(link))
             self.label.pack(anchor="w", pady=5)
 
-        self.items_scraped += 1
+        self.window.items_scraped += 1
         self.window.items_scraped_ui.configure(text=f"Items scraped: {self.window.items_scraped}")
 
     def add_listing_to_ui_amazon(self, title, price, link):
@@ -114,7 +114,7 @@ class Main:
         self.label.bind("<Button-1>", lambda e: self.window.callback(link))
         self.label.pack(anchor="w", pady=5)
 
-        self.items_scraped += 1
+        self.window.items_scraped += 1
         self.window.items_scraped_ui.configure(text=f"Items scraped: {self.window.items_scraped}")
 
 
