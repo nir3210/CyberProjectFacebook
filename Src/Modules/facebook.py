@@ -9,16 +9,16 @@ import re
 from googletrans import Translator
 
 def scrape_facebook_marketplace(should_stop, ui_callback, Get_category, debug):
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    CHROME_PATH = os.path.join(BASE_DIR, "..", "..", "ChromeDriver", "chromedriver.exe")
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__)) # absolute path to file ( module )
+    CHROME_PATH = os.path.join(BASE_DIR, "..", "..", "ChromeDriver", "chromedriver.exe") # cd .. cd .. cd Chromedriver\chromedriver.exe
 
-    service = Service(CHROME_PATH)
+    service = Service(CHROME_PATH) # set service to the driver
     options = Options()
     prefs = {
-    "profile.default_content_setting_values.notifications": 2
+    "profile.default_content_setting_values.notifications": 2 # block notifications
     }
     options.add_experimental_option("prefs", prefs)
-    if not debug:
+    if not debug:# set as headless
         options.add_argument("--headless=new")
 
     driver = webdriver.Chrome(service=service, options=options)
@@ -30,7 +30,7 @@ def scrape_facebook_marketplace(should_stop, ui_callback, Get_category, debug):
     SRC_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     COOKIES_PATH = os.path.join(SRC_DIR, "Settings", "cookies.json")
 
-    with open(COOKIES_PATH, "r") as file:
+    with open(COOKIES_PATH, "r") as file:   # load cookies to browser
         cookies = json.load(file)
         for cookie in cookies:
             driver.add_cookie(cookie)
@@ -38,7 +38,7 @@ def scrape_facebook_marketplace(should_stop, ui_callback, Get_category, debug):
     driver.refresh()
     sleep(1)
 
-    seen_listings = set()
+    seen_listings = set() # set is just an array that is WAYYY faster o(1) instead of o(n) in addition its also does not care about order nor allows duplicates
     scroll_pause = 1.25
 
     while not should_stop():

@@ -1,1 +1,638 @@
-[]
+[
+    {
+        "title": "Cmple - Cat6 Cable 1000ft Bulk Lan Ethernet Cat 6 Wire Network UTP 23AWG CMR Riser 10Gbps 550 MHz Pull Box 1000 Feet, Blue",
+        "price": "109",
+        "asin": "B004HCAZNO",
+        "url": "https://amazon.com/dp/B004HCAZNO"
+    },
+    {
+        "title": "Vertical Cable Cat6, 550 MHz, UTP, 23AWG, Solid Bare Copper,1000ft, Bulk Ethernet Cable - 060 Series, White",
+        "price": "195",
+        "asin": "B005UFKJPG",
+        "url": "https://amazon.com/dp/B005UFKJPG"
+    },
+    {
+        "title": "Elite Cat6e Plenum Cable 600MHz, 1000ft, 23AWG, UTP, Solid Pure Copper, UL Listed, UL-LP Certification, High Performance PoE, w/Spline-Noise Reducing, Easy Pull - Reelex II Box, Bulk Ethernet, Blue",
+        "price": "272",
+        "asin": "B00QL3MHTC",
+        "url": "https://amazon.com/dp/B00QL3MHTC"
+    },
+    {
+        "title": "Ultra Clarity Cables Cat 6 Ethernet Cable 100 ft, Outdoor&Indoor 10Gbps Ethernet Cable, High Speed Cat6 Cable RJ45 LAN Internet Cable for Computer, Router, Modem, PS4/5, Xbox, Gaming - Black",
+        "price": "17",
+        "asin": "B07D7RVL65",
+        "url": "https://amazon.com/dp/B07D7RVL65"
+    },
+    {
+        "title": "Vabogu Cat 8 Ethernet Cable, Heavy Duty High Speed Internet Network Cable, Multiple Size Options, 26AWG, 2000MHz 40Gbps with Gold Plated RJ45 Connectors, Shielded for Indoor & Outdoor Use, 6FT",
+        "price": "8",
+        "asin": "B08PL1P53C",
+        "url": "https://amazon.com/dp/B08PL1P53C"
+    },
+    {
+        "title": "Syston Direct Burial Cat 6E Ethernet Network Cable 600 MHz, Bulk UTP 23 AWG Outside Plant (OSP) - Rated, Pure Bare Copper Wire, Waterproof Water Blocking Gel-Filled for Outdoor Wet Location Using",
+        "price": "31",
+        "asin": "B0DBGTHKXX",
+        "url": "https://amazon.com/dp/B0DBGTHKXX"
+    },
+    {
+        "title": "Ethernet Cable 10 ft, Cat 8 Ethernet Cable,Support Cat5/Cat5e/Cat6/Cat6e/Cat7 Standards,High Speed 40Gbps 2000Mhz F/FTP LAN Wires with RJ45 Connector for PC, Modem,Router,Gaming",
+        "price": "10",
+        "asin": "B0CCL7Y4ZK",
+        "url": "https://amazon.com/dp/B0CCL7Y4ZK"
+    },
+    {
+        "title": "Amcrest CAT6E 4K-Rated Video POE Ethernet Cable 100ft Internet High Speed Network Cable for PoE Security IP Cameras, Smart TV, PS4, Xbox One, Router, Laptop, Computer, Home (4PACK-CAT6ECABLE100)",
+        "price": "69",
+        "asin": "B075ZM31N3",
+        "url": "https://amazon.com/dp/B075ZM31N3"
+    },
+    {
+        "title": "Cat6 Plenum CMP (Cat6e), Ethernet Cable 1000ft, 23AWG UTP, 600MHz, Solid Bare Copper, UL Certified, w/Spline(Noise Reducing Cross Separator), Easy to Pull (Reelex II Box), Bulk Network Cable - Orange",
+        "price": "260",
+        "asin": "B00QL3MVSY",
+        "url": "https://amazon.com/dp/B00QL3MVSY"
+    },
+    {
+        "title": "Amcrest CAT6E 4K-Rated Video POE Ethernet Cable 60ft Internet High Speed Network Cable for PoE Security IP Cameras, Smart TV, PS4, Xbox One, Router, Laptop, Computer, Home (CAT6ECABLE60)",
+        "price": "14",
+        "asin": "B07NNTGLFN",
+        "url": "https://amazon.com/dp/B07NNTGLFN"
+    },
+    {
+        "title": "Amcrest CAT6E 4K-Rated Video POE Ethernet Cable 150ft Internet High Speed Network Cable for PoE Security IP Cameras, Smart TV, PS4, Xbox One, Router, Laptop, Computer, Home (4PACK-CAT6ECABLE150)",
+        "price": "89",
+        "asin": "B075ZHJFFP",
+        "url": "https://amazon.com/dp/B075ZHJFFP"
+    },
+    {
+        "title": "Cat6 Plenum CMP (Cat6e), Ethernet Cable 1000ft, 23AWG UTP, 600MHz, Solid Bare Copper, UL Certified, w/Spline, Easy Pull (Reelex II), Networking Cable",
+        "price": "248",
+        "asin": "B00QL3MSVY",
+        "url": "https://amazon.com/dp/B00QL3MSVY"
+    },
+    {
+        "title": "Amcrest CAT6E 4K-Rated Video POE Ethernet Cable 100ft Internet High Speed Network Cable for PoE Security IP Cameras, Smart TV, PS4, Xbox One, Router, Laptop, Computer, Home (2PACK-CAT6ECABLE100)",
+        "price": "34",
+        "asin": "B075ZFCBQJ",
+        "url": "https://amazon.com/dp/B075ZFCBQJ"
+    },
+    {
+        "title": "Outdoor Indoor Cat6/Cat6e Ethernet Cable,Water Resistant Direct Burial LLDPE UV Jacket - 23AWG 10Gbps High Speed Gigabit Internet Network Cable with 50 Ties,Weatherproof for Router Modem (35M)",
+        "price": "19",
+        "asin": "B0FMDXPPXP",
+        "url": "https://amazon.com/dp/B0FMDXPPXP"
+    },
+    {
+        "title": "Cat 6 Ethernet Cable 100 ft, Indoor&Outdoor, High Speed 10Gbps Internet Network, Pure Copper Flat Ethernet Patch Cable Long, Computer LAN Cable with Clips & Straps for Router, Modem, PS4/5, Black",
+        "price": "17",
+        "asin": "B017R12KF2",
+        "url": "https://amazon.com/dp/B017R12KF2"
+    },
+    {
+        "title": "Cat6 Ethernet Cable 10Gbps 3 ft (10 Pack), UTP Ethernet Cable Cat 6, Flexible Bare Copper Cat6 Cable, Cat 6 Network Cable for Server, Data Center, Black",
+        "price": "9",
+        "asin": "B0FLX8YNWT",
+        "url": "https://amazon.com/dp/B0FLX8YNWT"
+    },
+    {
+        "title": "Dripstone CAT6 Ethernet Cable 1000ft Bulk Network LAN Wire 23AWG Solid CCA UTP 550MHz High-Speed Internet Cable Gaming, Streaming, Office, Home Use, Pull Box, CAT 6 Bulk, Stable Connectivity - Blue",
+        "price": "109",
+        "asin": "B00QJGG4IG",
+        "url": "https://amazon.com/dp/B00QJGG4IG"
+    },
+    {
+        "title": "NavePoint Cat6 (CCA), 1000ft, Blue, Solid Bulk Ethernet Cable, 550MHz, 23AWG 4 Pair, Unshielded Twisted Pair (UTP)",
+        "price": "113",
+        "asin": "B00YZ5KWOK",
+        "url": "https://amazon.com/dp/B00YZ5KWOK"
+    },
+    {
+        "title": "Cat6A Ethernet Cable Shielded 10Gbps 3 ft (5 Pack), Slim Shielded (F/UTP) Ethernet Cable Cat 6, Flexible 28AWG Bare Copper Cat6 Cable, Space-saving Cat 6a Network Cable for Server, Data Center, Black",
+        "price": "6",
+        "asin": "B0F5Q5M9VM",
+        "url": "https://amazon.com/dp/B0F5Q5M9VM"
+    },
+    {
+        "title": "TRUE CABLE Cat6 Riser (CMR), 1000ft, Blue, 23AWG 4 Pair Solid Bare Copper, 550MHz, ETL Listed, Unshielded Twisted Pair (UTP), Bulk Ethernet Cable",
+        "price": "194",
+        "asin": "B01JAVL5OE",
+        "url": "https://amazon.com/dp/B01JAVL5OE"
+    },
+    {
+        "title": "Jadaol Cat 6 Ethernet Cable 50 ft, 10Gbps Support Cat8 Cat7 Network, Flat RJ45 LAN Patch Cable, High-Speed Wired Internet Cable for Router, Modem, Switch, Gaming Consoles, PC, Streaming Devices, White",
+        "price": "9",
+        "asin": "B00WD017GQ",
+        "url": "https://amazon.com/dp/B00WD017GQ"
+    },
+    {
+        "title": "Cat 7 Ethernet Cable 100 ft High Speed, Flat Internet Network LAN Wire, Long Shielded Patch Cord for Modem, Switch, Router, Xbox, Faster Than Cat5e/Cat5/Cat6/Cat6e–100 feet, Free Cable Clips",
+        "price": "19",
+        "asin": "B08LK8HNQ3",
+        "url": "https://amazon.com/dp/B08LK8HNQ3"
+    },
+    {
+        "title": "Cat 6 Ethernet Cable 3FT 10Pack, Cat6 Ethernet Patch Cable 10Gbps, High-Speed UTP Cat6 Network Cable Pure Copper, Cat 6 Cable for Home and Office Network, Black",
+        "price": "12",
+        "asin": "B0CQXG1WPC",
+        "url": "https://amazon.com/dp/B0CQXG1WPC"
+    },
+    {
+        "title": "Syston Direct Burial Shielded Cat 6E Ethernet Network Cable, Bulk 600 MHz F/UTP 23 AWG Pure Bare Copper Outside Plant (OSP) - Rated, Waterproof Dual-Layer Jacket for Outdoor Wet Location Application",
+        "price": "196",
+        "asin": "B0FG7WF5YS",
+        "url": "https://amazon.com/dp/B0FG7WF5YS"
+    },
+    {
+        "title": "Adoreen Bulk Cat 6 Ethernet Cable 350 Ft Black, Easy Pull Box, 24AWG CCA, 10Gbps 550Mhz, POE,Soft Flexible Smooth UTP Internet Network Cable-Running FT Count",
+        "price": "37",
+        "asin": "B0D1Y7JK8M",
+        "url": "https://amazon.com/dp/B0D1Y7JK8M"
+    },
+    {
+        "title": "zdyCGTime Cat6e RJ45 Down Angle Male to Female Shielded Ethernet Network Screw Panel Mount Extension Cable 90 Degree Angle RJ45 Network Cable,1ft(Down)",
+        "price": "7",
+        "asin": "B07QPTTGMF",
+        "url": "https://amazon.com/dp/B07QPTTGMF"
+    },
+    {
+        "title": "Big-A - Bulk Cat6 Cable 1000ft 23AWG Solid 4 Pair, Cat 6 Ethernet Cable Unshielded Twisted Pair (UTP), (CMR) 550MHz Internet Cable, Pull Box - Blue",
+        "price": "109",
+        "asin": "B0C75CYHW1",
+        "url": "https://amazon.com/dp/B0C75CYHW1"
+    },
+    {
+        "title": "DG Cat6 Riser (CMR), 500ft, Unshielded, 24AWG, with Spline (+), Solid Bare Copper, 600MHz, ETL Listed, Indoor/Home/Commercial Use, Bulk Ethernet Cable, Blue",
+        "price": "90",
+        "asin": "B07S97SDM9",
+        "url": "https://amazon.com/dp/B07S97SDM9"
+    },
+    {
+        "title": "Cable Matters [UL Listed] 10Gbps in-Wall Riser Rated (CMR) 23AWG Bare Copper Cat6 Ethernet Cable - 300ft, Cat 6 Ethernet Cable Spool, Cat 6 Cord Bulk, White",
+        "price": "84",
+        "asin": "B0FC5N85ZF",
+        "url": "https://amazon.com/dp/B0FC5N85ZF"
+    },
+    {
+        "title": "Cmple - Cat6 Plenum Ethernet Cable 1000ft, Cat 6 Cable (CMP) 550MHz Unshielded Twisted Pair (UTP) 10 Gigabit Solid Network Cable, Bulk Ethernet Cable - Blue",
+        "price": "139",
+        "asin": "B0DP7WW3W6",
+        "url": "https://amazon.com/dp/B0DP7WW3W6"
+    },
+    {
+        "title": "Cat6 Ethernet Cable 1000FT Channel Test Pass, Cat6 1000ft Ethernet Cable 23AWG Solid CCA, Cat6 Cable UTP 550MHZ 10G with Easy Pull Box Blue",
+        "price": "89",
+        "asin": "B0CQX3KQCL",
+        "url": "https://amazon.com/dp/B0CQX3KQCL"
+    },
+    {
+        "title": "GEARit Cat 6 Ethernet Cable (10-Pack 5 Feet) Cat6 Network Patch, 10Gbps, RJ45, Snagless Cord, Gold-Plated Connectors, Internet for PC, TV, Tablet, Router, Printer, Servers, IT Data Center - Purple",
+        "price": "27",
+        "asin": "B00D8N76QM",
+        "url": "https://amazon.com/dp/B00D8N76QM"
+    },
+    {
+        "title": "Monoprice Cat6 Ethernet Bulk Cable - Stranded, 550Mhz, 10G, UTP, CM, 24AWG, Pure Bare Copper Wire, Pull Box, 250 Feet, Blue",
+        "price": "62",
+        "asin": "B015QJ4276",
+        "url": "https://amazon.com/dp/B015QJ4276"
+    },
+    {
+        "title": "Amazon Basics RJ45 Cat 6 Ethernet Patch Cable, 10Gpbs High-Speed Cable, 250MHz, Snagless, 15 Foot, Black",
+        "price": "6",
+        "asin": "B089MGH8W3",
+        "url": "https://amazon.com/dp/B089MGH8W3"
+    },
+    {
+        "title": "Adoreen Cat 6 Outdoor Ethernet Cable 30 Ft White, High Speed Heavy Duty Long Internet Network Cable for POE Camera Cat 5 5e RJ45 LAN Patch Cable Cord, Sturdy Waterproof Direct Burial+25 Ties",
+        "price": "13",
+        "asin": "B0CSS62V3J",
+        "url": "https://amazon.com/dp/B0CSS62V3J"
+    },
+    {
+        "title": "Cat6a Ethernet Cable Slim 100ft Outdoor&Indoor, 28AWG Pure Copper Cat6 Internet Cable for Waterproof & Direct Burial, Flexible Cat6 Ethernet Cable 10G 550MHZ, Cat 6 Network cable for Indoor Black",
+        "price": "12",
+        "asin": "B0D8SDWDQV",
+        "url": "https://amazon.com/dp/B0D8SDWDQV"
+    },
+    {
+        "title": "zdyCGTime 10inch Cat6e RJ45 M/F Shielded Ethernet Network Screw Panel Mount Extension Cable (10inch RJ45)",
+        "price": "6",
+        "asin": "B01J7KVPCK",
+        "url": "https://amazon.com/dp/B01J7KVPCK"
+    },
+    {
+        "title": "Syston Cat 6E Ethernet Network Cable Shielded - 100 FT, 600MHz 23 AWG F/UTP Solid Bare Copper Wire, Plenum-Rated CMP Sunlight-Resistant Indoor/Outdoor Use, Bulk No Ends 20 ft to 1000 ft Available",
+        "price": "79",
+        "asin": "B0DFM2HG62",
+        "url": "https://amazon.com/dp/B0DFM2HG62"
+    },
+    {
+        "title": "Cat6 Plenum Cable 1000Ft Bare Copper | 23AWG, 550MHz, 10 Gigabit PoE++ (4PPoE) | DSX-8000 Network Analyzer Test Passed | Cat 6 Ethernet Solid Copper | 100% Solid Copper | Yellow",
+        "price": "164",
+        "asin": "B0DHYDD6CP",
+        "url": "https://amazon.com/dp/B0DHYDD6CP"
+    },
+    {
+        "title": "Cat 6E Cat 7 Outdoor Ethernet Cable 300 FT,Adoreen 10Gbps Heavy-Duty Shielded Internet Cable From 25-300FT,POE,SFTP,Waterproof Direct Burial&Indoor,Cat6A Cat7 Copper Network Cable RJ45 Patch Cord+Ties",
+        "price": "83",
+        "asin": "B09TP7YKST",
+        "url": "https://amazon.com/dp/B09TP7YKST"
+    },
+    {
+        "title": "Cat6 Plenum Cable 1000ft Black - Bulk CAT 6 Ethernet Cable (CMP), 23AWG, UTP, 550MHz, 10Gbps for High-Speed Networking",
+        "price": "117",
+        "asin": "B07GDQFHHJ",
+        "url": "https://amazon.com/dp/B07GDQFHHJ"
+    },
+    {
+        "title": "Cat 6 Outdoor Ethernet Cable 125 ft, 10Gbps 550MHz Pure Copper Network Internet Cable Direct Burial Waterproof UV LLDPE Jacket, LAN Cable Patch Cord with 40 Ties, UTP Support POE for PC",
+        "price": "30",
+        "asin": "B0D7GHRZ9J",
+        "url": "https://amazon.com/dp/B0D7GHRZ9J"
+    },
+    {
+        "title": "StarTech.com 30 ft CAT6a Ethernet Cable - 10 Gigabit Shielded Snagless RJ45 100W PoE Patch Cord - 10GbE STP Category 6a Network Cable - Gray Fluke Tested UL/TIA Certified (C6ASPAT30GR) Grey",
+        "price": "45",
+        "asin": "B071D9WKQ2",
+        "url": "https://amazon.com/dp/B071D9WKQ2"
+    },
+    {
+        "title": "Cat6a Slim Ethernet Patch Cable 150ft Indoor & Outdoor, Flexible 10G Cat6 Internet Network Cable Waterproof LLDPE UV Jacket, Pure Copper Cat 6 Ethernet Cable, White",
+        "price": "19",
+        "asin": "B0DNDL1GBR",
+        "url": "https://amazon.com/dp/B0DNDL1GBR"
+    },
+    {
+        "title": "Cable Matters 10Gbps 5-Pack Snagless Short Shielded Cat 6A Ethernet Cable - 3ft, Cat 6A Cable, Cat6A Cord, Ethernet Cord, Black",
+        "price": "13",
+        "asin": "B00HEM57ZU",
+        "url": "https://amazon.com/dp/B00HEM57ZU"
+    },
+    {
+        "title": "Cat 6 Ethernet Cable 6 Ft 2 Pack, Cat 6 Cable Outdoor&Indoor, High Speed 10Gbps Internet Network Cable, Cat6 Ethernet Patch Cable Long, Computer LAN Cable for Router, Modem, PS4/5 - Blue & Black",
+        "price": "9",
+        "asin": "B00GBBSP6S",
+        "url": "https://amazon.com/dp/B00GBBSP6S"
+    },
+    {
+        "title": "Dripstone CAT6 Direct Burial Ethernet Cable 23AWG Solid CCA UTP, Waterproof HDPE Insulated, Polyethylene (PE) Jacket for Indoor/Outdoor Installations (Black - 1000ft)",
+        "price": "139",
+        "asin": "B07BW7CHWB",
+        "url": "https://amazon.com/dp/B07BW7CHWB"
+    },
+    {
+        "title": "Cat 6 Ethernet Cable 5 ft (5 Pack) (at a Cat5e Price but Higher Bandwidth) Cat6 Internet Network Cable Flat - Ethernet Patch Cables Short - Computer LAN Cable with Snagless RJ45 Connectors",
+        "price": "10",
+        "asin": "B017R12IJA",
+        "url": "https://amazon.com/dp/B017R12IJA"
+    },
+    {
+        "title": "Cable Matters 10Gbps 5-Color Combo Snagless Cat 6 Ethernet Cable - 5ft, Cat 6 Cable, Cat6 Cord, Ethernet Cord, Multicolored (Black, Blue, White, Green, Red)",
+        "price": "12",
+        "asin": "B00E5I7VJG",
+        "url": "https://amazon.com/dp/B00E5I7VJG"
+    },
+    {
+        "title": "Monoprice Cat5e Ethernet Bulk Cable - Network Internet Cord - Solid, 350Mhz, UTP, CMR, Riser Rated, Pure Bare Copper Wire, 24AWG, 250ft, Blue",
+        "price": "40",
+        "asin": "B016YS89QS",
+        "url": "https://amazon.com/dp/B016YS89QS"
+    },
+    {
+        "title": "325ft Bulk Ethernet Cable, Cat6 Outdoor Waterproof Ethernet Cable with Messenger, Pure Copper, Double Jackets(PVC+LLDPE), UTP, 23AWG, POE, Weatherproof & UV Resistant - Ideal for Outdoor Networking",
+        "price": "167",
+        "asin": "B0BX4J5JXQ",
+        "url": "https://amazon.com/dp/B0BX4J5JXQ"
+    },
+    {
+        "title": "Cat 6 Outdoor Ethernet Cable 100 ft, 24AWG 10Gbps Cat6 Cable Cord Waterproof Direct Burial LLDPE UV Jacket, Internet Network Cable with 20 Ties Support POE Cat6 Cat5e Cat5, CCA, UTP for PC",
+        "price": "20",
+        "asin": "B0C3RDDQJ1",
+        "url": "https://amazon.com/dp/B0C3RDDQJ1"
+    },
+    {
+        "title": "Amazon Basics RJ45 Cat-6 Ethernet Patch Cable, 1Gpbs Transfer Speed, Gold-Plated Connectors, 50 Foot for PC, TV, Tablet, Router, Printer, Black",
+        "price": "14",
+        "asin": "B0134QJH4G",
+        "url": "https://amazon.com/dp/B0134QJH4G"
+    },
+    {
+        "title": "UGREEN Cat 8 Ethernet Cable, 2 Pack Ethernet Cable with 40Gbps 2000Mhz High Speed, 26AWG Braided, Shielded Heavy Duty Internet Cable Compatible for Gaming PC PS5 PS4 PS6 Xbox Modem Router, 6FT",
+        "price": "12",
+        "asin": "B09TDT78N9",
+        "url": "https://amazon.com/dp/B09TDT78N9"
+    },
+    {
+        "title": "GEARit Cat 6 Ethernet Cable (20-Pack 5 Feet) Cat6 Network Patch, 10Gbps, RJ45, Snagless Cord, Gold-Plated Connectors, Internet for PC, TV, Tablet, Router, Printer, Servers, IT Data Center - Orange",
+        "price": "42",
+        "asin": "B00DNLIIXO",
+        "url": "https://amazon.com/dp/B00DNLIIXO"
+    },
+    {
+        "title": "GEARit Cat 6 Ethernet Cable (10-Pack 10 Feet) Cat6 Network Patch, 10Gbps, RJ45, Snagless Cord, Gold-Plated Connectors, Internet for PC, TV, Tablet, Router, Printer, Servers, IT Data Center - Orange",
+        "price": "47",
+        "asin": "B003EE127E",
+        "url": "https://amazon.com/dp/B003EE127E"
+    },
+    {
+        "title": "Amazon Basics 10Gbps High-Speed Cat6 Ethernet Network Patch Cable, RJ45, Gold-Plated, Snagless, 10 Foot, 5-Pack Multicolor",
+        "price": "11",
+        "asin": "B07RTCXGCL",
+        "url": "https://amazon.com/dp/B07RTCXGCL"
+    },
+    {
+        "title": "Cat 8 Ethernet Cable 50 ft, 6ft 10ft 20ft 30ft 40ft 75ft 100ft 150ft Heavy Duty High Speed Internet Network Cable 26AWG 40Gbps 2000Mhz,Professional LAN Cable Shielded in Wall,Indoor&Outdoor",
+        "price": "19",
+        "asin": "B08DMPXNYR",
+        "url": "https://amazon.com/dp/B08DMPXNYR"
+    },
+    {
+        "title": "Cables Direct Online CAT6 Cable 1000ft Pull Box Solid Ethernet LAN UTP Cable 23AWG 550Mhz RJ45 Network CCA Copper Clad Aluminum Wire Bulk (Green)",
+        "price": "94",
+        "asin": "B09JP3QR6P",
+        "url": "https://amazon.com/dp/B09JP3QR6P"
+    },
+    {
+        "title": "Cable Matters 10Gbps UV Resistant 23AWG Outdoor Cat6 Ethernet Cable – 500ft, Solid, Bare Copper, UTP 550MHz, Bulk Weatherproof Cable for PoE, IP Cameras",
+        "price": "152",
+        "asin": "B0DSPH8NFW",
+        "url": "https://amazon.com/dp/B0DSPH8NFW"
+    },
+    {
+        "title": "DbillionDa Cat8 Ethernet Cable, Outdoor&Indoor, 6FT Heavy Duty High Speed 26AWG, 2000Mhz with Gold Plated RJ45 Connector, Weatherproof F/FTP UV Resistant for Router, Modem, PC, Gaming",
+        "price": "6",
+        "asin": "B07QLXC6QR",
+        "url": "https://amazon.com/dp/B07QLXC6QR"
+    },
+    {
+        "title": "Cat 6 Ethernet Cable 1.5ft (6 Pack) (at a Cat5e Price but Higher Bandwidth) Flat Internet Network Cable - Cat6 Ethernet Patch Cable Short - Black Cat6 Computer Cable with Snagless RJ45 Connectors",
+        "price": "10",
+        "asin": "B01F3CSCFO",
+        "url": "https://amazon.com/dp/B01F3CSCFO"
+    },
+    {
+        "title": "Cat 6 Ethernet Cable 100 ft, Outdoor & Indoor 23AWG 10Gbps High Speed, Weatherproof Direct Burial LLDPE UV Jacket, RJ45 CCA LAN Cable with 20 Ties, Support for Cat5e/Cat5/Cat6 Networks",
+        "price": "18",
+        "asin": "B0FC68P2ZP",
+        "url": "https://amazon.com/dp/B0FC68P2ZP"
+    },
+    {
+        "title": "Basicolor HDMI KVM USB Extender with PoC Over Cat5/Cat6/Cat6e HDMI to RJ45 Support 1080p Video Lossless No Latency,80m 262ft Transmitter and Receiver",
+        "price": "99",
+        "asin": "B07DJ56875",
+        "url": "https://amazon.com/dp/B07DJ56875"
+    },
+    {
+        "title": "Snowkids Cat 8 Ethernet Cable 50 FT, Strong Signal, Flat High Speed 40Gbps 2000Mhz, Network Cord with RJ45 Internet Connector for TV/Printer/Computer/Modem/Router/ps-3/4/5, Braided LAN Cable 50FT Grey",
+        "price": "15",
+        "asin": "B0B6HT7DT2",
+        "url": "https://amazon.com/dp/B0B6HT7DT2"
+    },
+    {
+        "title": "Cables Direct Online CAT6 1000FT Outdoor Weatherproof 23 AWG 550MHz Cable FTP Wire Solid Direct Burial UV (1000FT, FTP (Shielded))",
+        "price": "129",
+        "asin": "B079LJDM57",
+        "url": "https://amazon.com/dp/B079LJDM57"
+    },
+    {
+        "title": "Cat 8 Ethernet Cable 75FT, High Speed Heavy Duty Cat8 Internet Ethernet Cable, 40Gbps 2000Mhz SFTP RJ45 Flat Cable Shielded in Wall - 22M",
+        "price": "29",
+        "asin": "B09NY22BG2",
+        "url": "https://amazon.com/dp/B09NY22BG2"
+    },
+    {
+        "title": "Cable Matters 10Gbps Snagless Cat 6 Ethernet Cable - 5ft, Cat 6 Cable, Cat6 Cord, Ethernet Cord, Black",
+        "price": "7",
+        "asin": "B0B57PDRS2",
+        "url": "https://amazon.com/dp/B0B57PDRS2"
+    },
+    {
+        "title": "Monoprice Cat6A 6in Blue 10-Pk Patch Cable UTP 30AWG 10G Pure Bare Copper Snagless RJ45 SlimRun Series Ethernet Cable",
+        "price": "17",
+        "asin": "B079584P5Y",
+        "url": "https://amazon.com/dp/B079584P5Y"
+    },
+    {
+        "title": "Cable Matters 100-Pack Cat 6 Pass Through RJ45 Connectors, 50µ Gold Plated (Cat 6 Ends / Cat6 Connector /RJ45 Modular Plugs/Ethernet Plugs/Network Connector) for Solid or Stranded UTP Ethernet Cable",
+        "price": "17",
+        "asin": "B07PXMN2VK",
+        "url": "https://amazon.com/dp/B07PXMN2VK"
+    },
+    {
+        "title": "Ethernet Junction Box,Butt Splice Connector of CAT6A/CAT6E/CAT6/CAT5E/CAT5 Network Cable,Tool Free Shielded Punch Down Type Terminal of FTP/STP/UTP Internet Cord,No Crimp EZ DIY Coupler Adapter[2pack]",
+        "price": "19",
+        "asin": "B099DWZZD3",
+        "url": "https://amazon.com/dp/B099DWZZD3"
+    },
+    {
+        "title": "VCE UL Listed Cat6 RJ45 Pass Through Connectors 50-Pack, Cat 6/Cat 5e RJ45 Ends Gold Plated for Solid or Stranded UTP Network Cable Support PoE",
+        "price": "8",
+        "asin": "B07MM3FQ3F",
+        "url": "https://amazon.com/dp/B07MM3FQ3F"
+    },
+    {
+        "title": "CAT6 Ethernet Coax Wall Plate Female to Female - CAT 6 RJ45 and Coaxial Outlet Cover Plate for CAT6/CAT6e/CAT5e Network Cable and Cable TV",
+        "price": "6",
+        "asin": "B0CQC53156",
+        "url": "https://amazon.com/dp/B0CQC53156"
+    },
+    {
+        "title": "Accessbuy 100 Pack RJ45 CAT6 CAT6E CAT5 CAT5E Ethernet Network Cable Strain Relief Boots Cable Connector Plug Cover Mixed Color for Laptop",
+        "price": "7",
+        "asin": "B01LYLGWSY",
+        "url": "https://amazon.com/dp/B01LYLGWSY"
+    },
+    {
+        "title": "Cable Matters 100-Pack CAT6 RJ45 Modular Plugs, 50µ Gold Plated (RJ45 Connector, Cat 6 Ends, Cat 6 Ethernet Connector, Ethernet Plugs), for Solid or Stranded UTP Cable",
+        "price": "16",
+        "asin": "B004D5RFCE",
+        "url": "https://amazon.com/dp/B004D5RFCE"
+    },
+    {
+        "title": "LeMotech Flat Cable Clips, 1000pcs 10mm Wire Wall Clips with Steel Nails, Coaxial Nail Clamps for Cable Cord Management CAT6 CAT6e RJ45 Ethernet Cable Clamps, White",
+        "price": "15",
+        "asin": "B0DBQ7N35M",
+        "url": "https://amazon.com/dp/B0DBQ7N35M"
+    },
+    {
+        "title": "Cable Matters [UL Listed] 10-Pack 10Gbps Cat 6 Ethernet Coupler (RJ45 Coupler, Cat6 RJ45 Female to Female Adapter, Ethernet Extender Adapter) in Black, Compatible with Cat6A, Cat5e",
+        "price": "23",
+        "asin": "B00IO3HH9M",
+        "url": "https://amazon.com/dp/B00IO3HH9M"
+    },
+    {
+        "title": "Cable Matters 100-Pack Cat 6 Pass Through RJ45 Connectors, 50µ Gold Plated (Cat 6 Ends / Cat6 Connector /RJ45 Modular Plugs/Ethernet Plugs/Network Connector) for Solid or Stranded UTP Ethernet Cable",
+        "price": "17",
+        "asin": "B07PXMN2VK",
+        "url": "https://amazon.com/dp/B07PXMN2VK"
+    },
+    {
+        "title": "Network Cable Tester, WANLUTECH RJ45 Cable TDR Tester Wire Tracker PoE Voltage Test Video Level Meter Test TDR Cable Tester for Cat6e Cat5e BNC Cable Telephone Line Open Short Length",
+        "price": "139",
+        "asin": "B0BXS18SVR",
+        "url": "https://amazon.com/dp/B0BXS18SVR"
+    },
+    {
+        "title": "CAT6 Ethernet Coax Wall Plate Female to Female - CAT 6 RJ45 and Coaxial Outlet Cover Plate for CAT6/CAT6e/CAT5e Network Cable and Cable TV",
+        "price": "6",
+        "asin": "B0CQC53156",
+        "url": "https://amazon.com/dp/B0CQC53156"
+    },
+    {
+        "title": "VCE UL Listed Cat6 RJ45 Pass Through Connectors 50-Pack, Cat 6/Cat 5e RJ45 Ends Gold Plated for Solid or Stranded UTP Network Cable Support PoE",
+        "price": "8",
+        "asin": "B07MM3FQ3F",
+        "url": "https://amazon.com/dp/B07MM3FQ3F"
+    },
+    {
+        "title": "Ethernet Junction Box,Butt Splice Connector of CAT6A/CAT6E/CAT6/CAT5E/CAT5 Network Cable,Tool Free Shielded Punch Down Type Terminal of FTP/STP/UTP Internet Cord,No Crimp EZ DIY Coupler Adapter[2pack]",
+        "price": "19",
+        "asin": "B099DWZZD3",
+        "url": "https://amazon.com/dp/B099DWZZD3"
+    },
+    {
+        "title": "LeMotech Flat Cable Clips, 1000pcs 10mm Wire Wall Clips with Steel Nails, Coaxial Nail Clamps for Cable Cord Management CAT6 CAT6e RJ45 Ethernet Cable Clamps, White",
+        "price": "15",
+        "asin": "B0DBQ7N35M",
+        "url": "https://amazon.com/dp/B0DBQ7N35M"
+    },
+    {
+        "title": "Cable Matters 100-Pack CAT6 RJ45 Modular Plugs, 50µ Gold Plated (RJ45 Connector, Cat 6 Ends, Cat 6 Ethernet Connector, Ethernet Plugs), for Solid or Stranded UTP Cable",
+        "price": "16",
+        "asin": "B004D5RFCE",
+        "url": "https://amazon.com/dp/B004D5RFCE"
+    },
+    {
+        "title": "Cable Matters [UL Listed] 10-Pack 10Gbps Cat 6 Ethernet Coupler (RJ45 Coupler, Cat6 RJ45 Female to Female Adapter, Ethernet Extender Adapter) in Black, Compatible with Cat6A, Cat5e",
+        "price": "23",
+        "asin": "B00IO3HH9M",
+        "url": "https://amazon.com/dp/B00IO3HH9M"
+    },
+    {
+        "title": "Accessbuy 100 Pack RJ45 CAT6 CAT6E CAT5 CAT5E Ethernet Network Cable Strain Relief Boots Cable Connector Plug Cover Mixed Color for Laptop",
+        "price": "7",
+        "asin": "B01LYLGWSY",
+        "url": "https://amazon.com/dp/B01LYLGWSY"
+    },
+    {
+        "title": "Soft Plastic Ethernet RJ45 Cable Connector Boots Cover Strain Relief Boots CAT5 CAT5E CAT6 CAT6E 100PCS (Gray)",
+        "price": "8",
+        "asin": "B07218R17P",
+        "url": "https://amazon.com/dp/B07218R17P"
+    },
+    {
+        "title": "YIOVVOM Soft Plastic Ethernet RJ45 Cable Connector Boots Cover Strain Relief Boots CAT5 CAT5E CAT6 CAT6E 100PCS by Copapa (Yellow)",
+        "price": "8",
+        "asin": "B072MPTBFP",
+        "url": "https://amazon.com/dp/B072MPTBFP"
+    },
+    {
+        "title": "Cable Matters [UL Listed] 10-Pack 10Gbps Cat6 Keystone Jacks, RJ45 Keystone Jack, Ethernet Modular Jack in White for Patch Panel and Wall Plate",
+        "price": "16",
+        "asin": "B00IO3HEN6",
+        "url": "https://amazon.com/dp/B00IO3HEN6"
+    },
+    {
+        "title": "Soft Plastic Ethernet RJ45 Cable Connector Boots Cover Strain Relief Boots CAT5 CAT5E CAT6 CAT6E 100PCS (Blue)",
+        "price": "8",
+        "asin": "B07219KGC4",
+        "url": "https://amazon.com/dp/B07219KGC4"
+    },
+    {
+        "title": "Cable Matters 200-Pack Cat6 / Cat5e RJ45 Strain Relief Boots, RJ45 Boot, Cat 6 Boot, Cat6 Ethernet Boots, Black, Suitable for 6.5mm (0.25in) Ethernet Cables",
+        "price": "13",
+        "asin": "B0049QIB1G",
+        "url": "https://amazon.com/dp/B0049QIB1G"
+    },
+    {
+        "title": "CAT6 Ethernet Coax Wall Plate Female to Female - CAT 6 RJ45 and Coaxial Outlet Cover Plate for CAT6/CAT6e/CAT5e Network Cable and Cable TV",
+        "price": "6",
+        "asin": "B0CQC53156",
+        "url": "https://amazon.com/dp/B0CQC53156"
+    },
+    {
+        "title": "Ethernet Junction Box,Butt Splice Connector of CAT6A/CAT6E/CAT6/CAT5E/CAT5 Network Cable,Tool Free Shielded Punch Down Type Terminal of FTP/STP/UTP Internet Cord,No Crimp EZ DIY Coupler Adapter[2pack]",
+        "price": "19",
+        "asin": "B099DWZZD3",
+        "url": "https://amazon.com/dp/B099DWZZD3"
+    },
+    {
+        "title": "LeMotech Flat Cable Clips, 1000pcs 10mm Wire Wall Clips with Steel Nails, Coaxial Nail Clamps for Cable Cord Management CAT6 CAT6e RJ45 Ethernet Cable Clamps, White",
+        "price": "15",
+        "asin": "B0DBQ7N35M",
+        "url": "https://amazon.com/dp/B0DBQ7N35M"
+    },
+    {
+        "title": "VCE 25-Pack Cat6 RJ45 Pass Through Connector with Strain Relief Boots (Black), UL Listed Cat 6/Cat 5e Unshielded RJ45 Ends Gold Plated for Solid or Stranded UTP Network Cable Support PoE",
+        "price": "8",
+        "asin": "B0FNW4CG8X",
+        "url": "https://amazon.com/dp/B0FNW4CG8X"
+    },
+    {
+        "title": "RJ45 Network Cable Tester, VXSCAN 8 Remote Units Network LAN Length Ethernet Cable Tester Kits for Cat5/CAT5e/CAT6/CAT6e - Locate The Breakage Point Length Measurement & Continuity Checking",
+        "price": "52",
+        "asin": "B0C285G4LQ",
+        "url": "https://amazon.com/dp/B0C285G4LQ"
+    },
+    {
+        "title": "Cable Matters 100-Pack CAT6 RJ45 Modular Plugs, 50µ Gold Plated (RJ45 Connector, Cat 6 Ends, Cat 6 Ethernet Connector, Ethernet Plugs), for Solid or Stranded UTP Cable",
+        "price": "16",
+        "asin": "B004D5RFCE",
+        "url": "https://amazon.com/dp/B004D5RFCE"
+    },
+    {
+        "title": "Cable Matters [UL Listed] 10-Pack 10Gbps Cat 6 Ethernet Coupler (RJ45 Coupler, Cat6 RJ45 Female to Female Adapter, Ethernet Extender Adapter) in Black, Compatible with Cat6A, Cat5e",
+        "price": "23",
+        "asin": "B00IO3HH9M",
+        "url": "https://amazon.com/dp/B00IO3HH9M"
+    },
+    {
+        "title": "Accessbuy 100 Pack RJ45 CAT6 CAT6E CAT5 CAT5E Ethernet Network Cable Strain Relief Boots Cable Connector Plug Cover Mixed Color for Laptop",
+        "price": "7",
+        "asin": "B01LYLGWSY",
+        "url": "https://amazon.com/dp/B01LYLGWSY"
+    },
+    {
+        "title": "YIOVVOM Soft Plastic Ethernet RJ45 Cable Connector Boots Cover Strain Relief Boots CAT5 CAT5E CAT6 CAT6E 100PCS (Purple)",
+        "price": "8",
+        "asin": "B072K4TTQQ",
+        "url": "https://amazon.com/dp/B072K4TTQQ"
+    },
+    {
+        "title": "Soft Plastic Ethernet RJ45 Cable Connector Boots Cover Strain Relief Boots CAT5 CAT5E CAT6 CAT6E 100PCS (Gray)",
+        "price": "8",
+        "asin": "B07218R17P",
+        "url": "https://amazon.com/dp/B07218R17P"
+    },
+    {
+        "title": "Soft Plastic Ethernet RJ45 Cable Connector Boots Cover Strain Relief Boots CAT5 CAT5E CAT6 CAT6E 100PCS by Copapa (Red)",
+        "price": "7",
+        "asin": "B071JXZK9C",
+        "url": "https://amazon.com/dp/B071JXZK9C"
+    },
+    {
+        "title": "YIOVVOM Soft Plastic Ethernet RJ45 Cable Connector Boots Cover Strain Relief Boots CAT5 CAT5E CAT6 CAT6E 100PCS by Copapa (Yellow)",
+        "price": "8",
+        "asin": "B072MPTBFP",
+        "url": "https://amazon.com/dp/B072MPTBFP"
+    },
+    {
+        "title": "Soft Plastic Ethernet RJ45 Cable Connector Boots Cover Strain Relief Boots CAT5 CAT5E CAT6 CAT6E 100PCS (Blue)",
+        "price": "8",
+        "asin": "B07219KGC4",
+        "url": "https://amazon.com/dp/B07219KGC4"
+    },
+    {
+        "title": "Cable Matters [UL Listed] 10-Pack 10Gbps Cat6 Keystone Jacks, RJ45 Keystone Jack, Ethernet Modular Jack in White for Patch Panel and Wall Plate",
+        "price": "16",
+        "asin": "B00IO3HEN6",
+        "url": "https://amazon.com/dp/B00IO3HEN6"
+    },
+    {
+        "title": "Cable Matters 200-Pack Cat6 / Cat5e RJ45 Strain Relief Boots, RJ45 Boot, Cat 6 Boot, Cat6 Ethernet Boots, Black, Suitable for 6.5mm (0.25in) Ethernet Cables",
+        "price": "13",
+        "asin": "B0049QIB1G",
+        "url": "https://amazon.com/dp/B0049QIB1G"
+    }
+]
