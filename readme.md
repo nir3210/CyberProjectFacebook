@@ -1,12 +1,5 @@
 <p align="center">
-  <img src="https://img.shields.io/badge/Python-3.9%2B-blue.svg" alt="Python 3.9+ compatible" />
-  <img src="https://img.shields.io/badge/GUI-CustomTkinter-green" alt="GUI built with CustomTkinter" />
-  <img src="https://img.shields.io/badge/Status-Educational%20Use-orange" alt="For educational use only" />
-</p>
-
-
-<p align="center">
-  A <strong>modular Python scraping application</strong> with a clean and modern <strong>GUI</strong>, built from the ground up to gather product listings from <strong>Facebook Marketplace</strong> and <strong>Amazon</strong>.
+  A <strong>modular Python scraping application</strong> with a clean and modern <strong>GUI</strong>
 </p>
 
 This project is designed to be the perfect starting point for anyone looking to dive into web scraping, automation, and building cool GUI-driven tools. We hope it will be a great learning experience, especially since it can be hard to find scraping projects that are both **updated** and **actively maintained**.
@@ -66,21 +59,11 @@ Step 2: Navigate into the Project Directory
 
 Now, move into the folder you just created:
 
-code
-Bash
-download
-content_copy
-expand_less
 cd CyberProjectFacebook
 Step 3: Install the Required Libraries
 
 The project depends on a few Python libraries. We've made it easy to install them all at once. Just run:
 
-code
-Bash
-download
-content_copy
-expand_less
 pip install -r requirements.txt
 
 This will read the requirements.txt file and install everything you need.
@@ -139,11 +122,6 @@ Other useful bits of info (which can vary by platform)
 
 Here’s a roadmap of the project. We’ve kept things organized so you can easily find your way around.
 
-code
-Text
-download
-content_copy
-expand_less
 Facebook-Scraper/
 │
 ├── requirements.txt      # All the Python packages you'll need
