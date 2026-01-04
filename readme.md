@@ -72,11 +72,7 @@ Step 4: Run the Application!
 
 You're all set! To launch the GUI, run the main script:
 
-code
-Bash
-download
-content_copy
-expand_less
+
 python Src/Main/main.py
 
 That's it! The application window should pop up, and you're ready to start scraping.
